@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.registration.RegistrationActivity">
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".presentation.registration.RegistrationActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/registration_edittext_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/login_hint"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+    <EditText
+        android:id="@+id/registration_edittext_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/login_password"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <Button
+            android:id="@+id/or_registration_button"
+            android:onClick="sendFormInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/standard_button_style"
+            android:text="@string/login_registration" />
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
