@@ -1,6 +1,8 @@
 package com.example.fafij.presentation.registration;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,18 +10,22 @@ import com.example.fafij.R;
 
 public class RegistrationActivity extends AppCompatActivity implements RegistrationContract.RegistrationViewInterface {
 
+    RegistrationPresenter presenter = new RegistrationPresenter(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        RegistrationPresenter presenter = new RegistrationPresenter(this);
+        setContentView(R.layout.activity_registration);
     }
 
     /**
      * Отправляет в презентер данные из форм (int)
      */
-    public void sendFormInfo() {
-
+    public void sendFormInfo(View view) {
+        EditText login = (EditText)findViewById(R.id.registration_edittext_login);
+        EditText password = (EditText)findViewById(R.id.registration_edittext_password);
+        String loginString = login.getText().toString();
+        String passwordString = password.getText().toString();
+        presenter.onRegistrationClick(loginString, passwordString);
     }
 
     /**
