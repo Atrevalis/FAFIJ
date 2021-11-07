@@ -27,11 +27,11 @@ public class RegistrationPresenter implements RegistrationContract.RegistrationP
         this.view = view;
     }
 
-    public class postRequest extends AsyncTask<String, String, JSONObject> {
+    public class postRequest extends AsyncTask<String, String, Integer> {
 
         @Override
-        protected JSONObject doInBackground(String... strings) {
-            JSONObject jsonResponse = null;
+        protected Integer doInBackground(String... strings) {
+            int code = 0;
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("login", strings[0]);
@@ -45,26 +45,26 @@ public class RegistrationPresenter implements RegistrationContract.RegistrationP
                         .build();
                 Response response = httpClient.newCall(request).execute();
 
-                String networkResponse = response.body().string();
-
-                if (!networkResponse.isEmpty()) {
-                    jsonResponse = new JSONObject(networkResponse);
+                int networkResponse = response.code();
+                if (networkResponse != 0) {
+                    code = networkResponse;
                 }
             } catch (Exception e) {
-                String error = String.format("{\"Error\":\"%s\"}", e);
-                try {
-                    jsonResponse = new JSONObject(error);
-                } catch (JSONException jsonException) {
-                    jsonException.printStackTrace();
-                }
+                return 0;
             }
-            return jsonResponse;
+            return code;
         }
 
         @Override
-        protected void onPostExecute(JSONObject jsonObject) {
-            super.onPostExecute(jsonObject);
-            view.testtest(jsonObject.toString());
+        protected void onPostExecute(Integer code) {
+            super.onPostExecute(code);
+            String toast = "";
+            if (code == 0) toast = "Неизвестная ошибка";
+            if (code == 201) toast = "Аккаунт создан";
+            if (code == 202) toast = "Вход успешен";
+            if (code == 406) toast = "Ошибка входа. Неправильное имя пользователя или пароль.";
+            if (code == 500) toast = "Пользователь уже существует.";
+            view.testtest(toast);
         }
     }
     /**
