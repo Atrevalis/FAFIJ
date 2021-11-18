@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     /**
      * Отправляет в презентер данные из форм (int)
      */
-    public void sendFormInfo() throws JSONException, InvalidKeySpecException, NoSuchAlgorithmException {
+    public void sendFormInfo(View view) throws JSONException, InvalidKeySpecException, NoSuchAlgorithmException {
         EditText login = (EditText)findViewById(R.id.login_edittext_login);
         EditText password = (EditText)findViewById(R.id.login_edittext_password);
         String loginString = login.getText().toString();
