@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.bottomnavigation.journal.JournalFragment"
-    android:id="@+id/fragment_journal">
+    android:id="@+id/fragment_journal"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/change_journal"
+        android:onClick="goToChangeJournal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="@string/change_journal"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"/>
+    <Button
+        android:id="@+id/add_user"
 
-</FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_user"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"/>
+    <Button
+        android:id="@+id/invitations"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invitations"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"/>
+    <Button
+        android:id="@+id/exit"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"/>
+
+
+</LinearLayout>

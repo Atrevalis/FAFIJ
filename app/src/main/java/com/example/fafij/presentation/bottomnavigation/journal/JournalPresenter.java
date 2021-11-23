@@ -1,15 +1,15 @@
 package com.example.fafij.presentation.bottomnavigation.journal;
 
-import com.example.fafij.models.Journal;
+import com.example.fafij.models.JournalNameWithLogins;
 
 public class JournalPresenter implements JournalContract.JournalPresenterInterface {
 
     public JournalContract.JournalViewInterface view;
-    public Journal model;
+    public JournalNameWithLogins model;
 
     public JournalPresenter(JournalContract.JournalViewInterface view) {
         this.view = view;
-        this.model = new Journal();
+        this.model = new JournalNameWithLogins();
     }
 
     /**

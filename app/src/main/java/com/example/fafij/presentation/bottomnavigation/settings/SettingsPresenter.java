@@ -8,4 +8,8 @@ public class SettingsPresenter implements SettingsContract.SettingsPresenterInte
         this.view = view;
     }
 
+    @Override
+    public void onExitClick() {
+
+    }
 }

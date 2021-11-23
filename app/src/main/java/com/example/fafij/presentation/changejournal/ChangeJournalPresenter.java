@@ -24,7 +24,8 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
      * @param login логин пользователя
      */
     @Override
-    public void onRefresh(String login) {
-
+    public void onLoad(String login) {
+        //запрос
+        //view.showJournalsList(journalNamesList);
     }
 }

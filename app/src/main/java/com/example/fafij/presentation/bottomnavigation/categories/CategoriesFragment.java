@@ -25,7 +25,7 @@ public class CategoriesFragment extends Fragment implements CategoriesContract.C
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_journal, container, false);
+        return inflater.inflate(R.layout.fragment_categories, container, false);
     }
 
     /**

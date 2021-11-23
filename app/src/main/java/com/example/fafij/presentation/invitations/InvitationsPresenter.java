@@ -1,5 +1,7 @@
 package com.example.fafij.presentation.invitations;
 
+import com.example.fafij.models.Invitation;
+
 public class InvitationsPresenter implements InvitationsContract.InvitationsPresenterInterface {
 
     public InvitationsContract.InvitationsViewInterface view;
@@ -8,4 +10,18 @@ public class InvitationsPresenter implements InvitationsContract.InvitationsPres
         this.view = view;
     }
 
+    @Override
+    public void onAcceptClick(String journalName) {
+
+    }
+
+    @Override
+    public void onRefuseClick(String journalName) {
+
+    }
+
+    @Override
+    public void onLoad(String login) {
+
+    }
 }

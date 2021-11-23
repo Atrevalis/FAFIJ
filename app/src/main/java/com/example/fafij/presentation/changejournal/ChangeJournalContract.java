@@ -1,6 +1,6 @@
 package com.example.fafij.presentation.changejournal;
 
-import java.util.ArrayList;
+import com.example.fafij.models.JournalNamesWithLoginsList;
 
 
 public interface ChangeJournalContract {
@@ -8,12 +8,12 @@ public interface ChangeJournalContract {
     interface ChangeJournalViewInterface {
         void goToJournal();
         void showToastConnectionError();
-        void showJournalsList(ArrayList<String> journals);
+        void showJournalsList(JournalNamesWithLoginsList journalNamesWithLoginsList);
     }
 
     interface ChangeJournalPresenterInterface {
         void onChangingClick(String journalName);
-        void onRefresh(String login);
+        void onLoad(String login);
     }
 
 }

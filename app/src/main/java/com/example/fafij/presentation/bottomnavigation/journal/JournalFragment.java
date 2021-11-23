@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fafij.R;
-import com.example.fafij.models.Journal;
+import com.example.fafij.models.JournalNameWithLogins;
 
 public class JournalFragment extends Fragment implements JournalContract.JournalViewInterface {
 
@@ -44,7 +44,7 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
      * Обновляет данные в списке записей (ext/int)
      */
     @Override
-    public void refreshData(Journal journal) {
+    public void refreshData(JournalNameWithLogins journal) {
 
     }
 
