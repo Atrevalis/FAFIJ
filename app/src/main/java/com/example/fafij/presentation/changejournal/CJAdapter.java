@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.R;
-import com.example.fafij.models.JournalNameWithLogins;
+import com.example.fafij.models.data.JournalNameWithLogins;
 
 import java.util.ArrayList;
 

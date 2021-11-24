@@ -39,19 +39,25 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     }
 
     @Override
-    public void testSuccessMessage(){
+    public void testSuccessMessage(int code){
+        String toast = "";
+        if (code == 0) toast = "Неизвестная ошибка";
+        if (code == 201) toast = "Аккаунт создан";
+        if (code == 202) toast = "Вход успешен";
+        if (code == 406) toast = "Ошибка входа. Неправильное имя пользователя или пароль.";
+        if (code == 500) toast = "Пользователь уже существует.";
         Toast.makeText(
                 this,
-                "Вы были успешно авторизированы.",
+                code + ": "+ toast,
                 Toast.LENGTH_SHORT
         ).show();
     }
 
     @Override
-    public void testFailMessage() {
+    public void testFailMessage(String exception) {
         Toast.makeText(
                 this,
-                "Произошла ошибка.",
+                "Произошла ошибка: " + exception,
                 Toast.LENGTH_SHORT
         ).show();
     }

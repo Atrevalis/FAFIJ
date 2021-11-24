@@ -1,6 +1,6 @@
 package com.example.fafij.presentation.changejournal;
 
-import com.example.fafij.models.JournalNamesWithLoginsList;
+import com.example.fafij.models.data.JournalNamesWithLoginsList;
 
 
 public interface ChangeJournalContract {

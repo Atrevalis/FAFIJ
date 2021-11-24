@@ -1,6 +1,6 @@
 package com.example.fafij.presentation.bottomnavigation.journal;
 
-import com.example.fafij.models.JournalNameWithLogins;
+import com.example.fafij.models.data.JournalNameWithLogins;
 
 public class JournalPresenter implements JournalContract.JournalPresenterInterface {
 
@@ -22,13 +22,9 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
 
     }
 
-    /**
-     * Обращается к модели для обновления и получения записей
-     * вызывает метод refreshData в View
-     * @param id идентификатор журнала
-     */
     @Override
-    public void onRefresh(int id) {
+    public void onLoad(String login, int journalId) {
 
     }
+
 }

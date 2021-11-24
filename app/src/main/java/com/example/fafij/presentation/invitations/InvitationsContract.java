@@ -1,6 +1,6 @@
 package com.example.fafij.presentation.invitations;
 
-import com.example.fafij.models.InvitationsList;
+import com.example.fafij.models.data.InvitationsList;
 
 public interface InvitationsContract {
 

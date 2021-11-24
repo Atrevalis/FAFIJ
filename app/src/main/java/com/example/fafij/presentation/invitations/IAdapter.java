@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.R;
-import com.example.fafij.models.Invitation;
+import com.example.fafij.models.data.Invitation;
 
 
 import java.util.ArrayList;

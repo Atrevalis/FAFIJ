@@ -1,4 +1,4 @@
-package com.example.fafij.models;
+package com.example.fafij.models.data;
 
 import java.util.ArrayList;
 

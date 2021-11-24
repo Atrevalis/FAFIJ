@@ -1,17 +1,12 @@
 package com.example.fafij.presentation.invitations;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityInvitationsBinding;
-import com.example.fafij.databinding.ActivityInviteuserBinding;
-import com.example.fafij.models.InvitationsList;
-import com.example.fafij.presentation.changejournal.CJAdapter;
-import com.example.fafij.presentation.inviteuser.InviteUserPresenter;
+import com.example.fafij.models.data.InvitationsList;
 
 public class InvitationsActivity extends AppCompatActivity implements InvitationsContract.InvitationsViewInterface {
 

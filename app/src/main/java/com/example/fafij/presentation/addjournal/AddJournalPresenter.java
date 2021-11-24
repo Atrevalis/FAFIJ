@@ -14,7 +14,7 @@ public class AddJournalPresenter implements AddJournalContract.AddJournalPresent
      * @param journalName название журнала, которое задал пользователь
      */
     @Override
-    public void onAddClick(String journalName) {
+    public void onAddJournalClick(String journalName) {
 
     }
 }

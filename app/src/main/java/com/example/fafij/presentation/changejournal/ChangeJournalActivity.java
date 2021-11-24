@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.databinding.ActivityChangejournalBinding;
-import com.example.fafij.models.JournalNamesWithLoginsList;
+import com.example.fafij.models.data.JournalNamesWithLoginsList;
 import com.example.fafij.presentation.addjournal.AddJournalActivity;
 import com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity;
 

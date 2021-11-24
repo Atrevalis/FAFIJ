@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityAddjournalBinding;
 import com.example.fafij.presentation.changejournal.ChangeJournalActivity;
 
@@ -20,7 +19,7 @@ public class AddJournalActivity extends AppCompatActivity implements AddJournalC
         binding = ActivityAddjournalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         AddJournalPresenter presenter = new AddJournalPresenter(this);
-        presenter.onAddClick(binding.journalNameEdittext.getText().toString());
+        presenter.onAddJournalClick(binding.journalNameEdittext.getText().toString());
     }
 
     /**
@@ -40,7 +39,7 @@ public class AddJournalActivity extends AppCompatActivity implements AddJournalC
     }
 
     public void sendAddingJournalName(View view) {
-        presenter.onAddClick(binding.journalNameEdittext.getText().toString());
+        presenter.onAddJournalClick(binding.journalNameEdittext.getText().toString());
     }
 
     public void onChangeJournalActivity() {

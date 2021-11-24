@@ -1,4 +1,4 @@
-package com.example.fafij.models;
+package com.example.fafij.models.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;

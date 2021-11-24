@@ -1,7 +1,5 @@
 package com.example.fafij.presentation.invitations;
 
-import com.example.fafij.models.Invitation;
-
 public class InvitationsPresenter implements InvitationsContract.InvitationsPresenterInterface {
 
     public InvitationsContract.InvitationsViewInterface view;

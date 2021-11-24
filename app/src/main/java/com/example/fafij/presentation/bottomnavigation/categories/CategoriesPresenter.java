@@ -10,10 +10,15 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
 
     /**
      * Указывает модели какую категорию необходимо удалить из БД
-     * @param id идентификатор категории
+     * @param category название категории
      */
     @Override
-    public void onDelete(int id) {
+    public void onDeleteClick(String category) {
+
+    }
+
+    @Override
+    public void onLoad(String login) {
 
     }
 }

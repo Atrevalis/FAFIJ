@@ -24,4 +24,14 @@
     <string name="role">Роль:</string>
     <string name="accept">Принять</string>
     <string name="refuse">Отказаться</string>
+    <string name="category">Категория:</string>
+    <string name="delete">Удалить</string>
+    <string name="add_category">Создать новую категорию</string>
+    <string name="category_name">Название категории</string>
+    <string name="sum">Сумма:</string>
+    <string name="comment">Комментарий:</string>
+    <string name="edit">Редактировать</string>
+    <string name="add_note">Добавить новую запись</string>
+    <string name="id_note">id записи:</string>
+    <string name="date_note">Дата записи:</string>
 </resources>

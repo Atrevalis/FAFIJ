@@ -10,6 +10,10 @@ import java.security.spec.KeySpec;
 
 import android.os.AsyncTask;
 
+import com.example.fafij.models.Network.RetrofitApiClient;
+import com.example.fafij.models.Network.RetrofitApiInterface;
+import com.example.fafij.models.data.LogIn;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
@@ -18,6 +22,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class LoginPresenter implements LoginContract.LoginPresenterInterface {
 
@@ -76,7 +82,25 @@ public class LoginPresenter implements LoginContract.LoginPresenterInterface {
      */
     @Override
     public void onAuthorizationClick(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        new postRequest().execute(login, hashPass(password), "/login");
+        LogIn postLogIn = new LogIn(login, hashPass(password));
+        Call<LogIn> call = RetrofitApiClient.getClient().logInPost(postLogIn);
+        call.enqueue(new Callback<LogIn>() {
+            @Override
+            public void onResponse(Call<LogIn> call, retrofit2.Response<LogIn> response) {
+                if(!response.isSuccessful()) {
+                    view.testSuccessMessage(response.code());
+                }
+                view.testSuccessMessage(response.code());
+            }
+
+            @Override
+            public void onFailure(Call<LogIn> call, Throwable t) {
+                view.testFailMessage(t.getLocalizedMessage());
+            }
+        });
+
+
+        //new postRequest().execute(login, hashPass(password), "/login");
     }
 
     public static String hashPass(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {

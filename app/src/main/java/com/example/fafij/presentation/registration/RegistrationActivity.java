@@ -35,16 +35,23 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         presenter.onRegistrationClick(loginString, passwordString);
     }
 
-    public void testSuccessMessage(){
+    @Override
+    public void testSuccessMessage(int code){
+        String toast = "";
+        if (code == 0) toast = "Неизвестная ошибка";
+        if (code == 201) toast = "Аккаунт создан";
+        if (code == 202) toast = "Вход успешен";
+        if (code == 406) toast = "Ошибка входа. Неправильное имя пользователя или пароль.";
+        if (code == 500) toast = "Пользователь уже существует.";
         Toast.makeText(
                 this,
-                "Регистрация прошла успешно.",
+                code + ": "+ toast,
                 Toast.LENGTH_SHORT
-                ).show();
+        ).show();
     }
 
     @Override
-    public void testFailMessage() {
+    public void testFailMessage(String exception) {
         Toast.makeText(
                 this,
                 "Произошла ошибка.",

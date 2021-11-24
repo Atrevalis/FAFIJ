@@ -4,6 +4,8 @@ public interface AddCategoryContract {
 
     interface AddCategoryViewInterface {
         void returnToCategories();
+        void showToastDuplicateError();
+        void showToastConnectionError();
     }
 
     interface AddCategoryPresenterInterface {

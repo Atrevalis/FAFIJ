@@ -12,8 +12,8 @@ public interface LoginContract {
         void showToastDataError();
         void showToastConnectionError();
         void goToAddJournal();
-        void testSuccessMessage();
-        void testFailMessage();
+        void testSuccessMessage(int code);
+        void testFailMessage(String exception);
         void testtest(String s);
     }
 

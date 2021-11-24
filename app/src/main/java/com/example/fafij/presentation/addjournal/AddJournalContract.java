@@ -8,7 +8,7 @@ public interface AddJournalContract {
     }
 
     interface AddJournalPresenterInterface {
-        void onAddClick(String journalName);
+        void onAddJournalClick(String journalName);
     }
 
 }

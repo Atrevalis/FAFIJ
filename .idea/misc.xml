@@ -9,14 +9,18 @@
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_addjournal.xml" value="0.152" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_addnote.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_bottomnavigation.xml" value="0.2" />
+        <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_category.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_changejournal.xml" value="0.2" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_invitations.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_inviteuser.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/activity_registration.xml" value="0.18704710144927536" />
+        <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/card_view_categories.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/card_view_invitations.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/card_view_journal.xml" value="0.2" />
+        <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/card_view_journal_note.xml" value="0.536" />
+        <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/fragment_categories.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/fragment_infographics.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/fragment_journal.xml" value="0.4" />
         <entry key="..\:/Users/Mi/Desktop/FAFIJ/app/src/main/res/layout/fragment_settings.xml" value="0.24320652173913043" />
