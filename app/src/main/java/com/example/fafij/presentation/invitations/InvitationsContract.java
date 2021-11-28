@@ -1,11 +1,16 @@
 package com.example.fafij.presentation.invitations;
 
-import com.example.fafij.models.data.InvitationsList;
+import com.example.fafij.models.data.Invitation;
+
+
+import java.util.ArrayList;
 
 public interface InvitationsContract {
 
     interface InvitationsViewInterface {
-        void showInvitations(InvitationsList invitationsList);
+        void showInvitations(ArrayList<Invitation> invitations);
+        void showToast(int code);
+        void showToastException(String e);
     }
 
     interface InvitationsPresenterInterface {

@@ -1,5 +1,17 @@
 package com.example.fafij.presentation.changejournal;
 
+import com.example.fafij.models.Network.RetrofitApiClient;
+import com.example.fafij.models.data.Journal;
+import com.example.fafij.models.data.Login;
+import com.example.fafij.models.data.TokenCatch;
+import com.example.fafij.models.data.postbodies.LoginPass;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJournalPresenterInterface {
 
     public ChangeJournalContract.ChangeJournalViewInterface view;
@@ -15,7 +27,8 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
      */
     @Override
     public void onChangingClick(String journalName) {
-
+        view.saveData(journalName);
+        view.goToBottomNavigation();
     }
 
     /**
@@ -25,7 +38,19 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
      */
     @Override
     public void onLoad(String login) {
-        //запрос
-        //view.showJournalsList(journalNamesList);
+        Login postLogin = new Login(login);
+        Call<ArrayList<Journal>> call = RetrofitApiClient.getClient().userJournals(postLogin);
+        call.enqueue(new Callback<ArrayList<Journal>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Journal>> call, Response<ArrayList<Journal>> response) {
+                if (!response.isSuccessful()) {
+                    view.showToastError(response.code());
+                } else view.showJournalsList(response.body());
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Journal>> call, Throwable t) {
+                view.showToastException(t.getLocalizedMessage());
+            }
+        });
     }
 }

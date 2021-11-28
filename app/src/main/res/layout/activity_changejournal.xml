@@ -16,7 +16,6 @@
 
     <Button
         android:id="@+id/add_journal_button"
-        android:onClick="goToAddJournal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

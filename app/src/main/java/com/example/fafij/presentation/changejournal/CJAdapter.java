@@ -11,24 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.R;
-import com.example.fafij.models.data.JournalNameWithLogins;
+import com.example.fafij.models.data.Journal;
 
 import java.util.ArrayList;
 
 public class CJAdapter extends RecyclerView.Adapter<CJAdapter.HolderCJ> {
 
     private final LayoutInflater inflater;
-    ArrayList<JournalNameWithLogins> listOfElements;
+    ArrayList<Journal> listOfElements;
     private final ChangeJournalPresenter presenter;
 
-    CJAdapter(Context context, ArrayList<JournalNameWithLogins> listOfElements, ChangeJournalPresenter presenter) {
+    CJAdapter(Context context, ArrayList<Journal> listOfElements, ChangeJournalPresenter presenter) {
         this.listOfElements = listOfElements;
         this.inflater = LayoutInflater.from(context);
         this.presenter = presenter;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void addElement(JournalNameWithLogins element) {
+    public void addElement(Journal element) {
         listOfElements.add(element);
         notifyDataSetChanged();
     }
@@ -48,12 +48,14 @@ public class CJAdapter extends RecyclerView.Adapter<CJAdapter.HolderCJ> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderCJ holder, int position) {
-        JournalNameWithLogins journalNameWithLogins = listOfElements.get(position);
-        holder.textViewName.setText(journalNameWithLogins.getJournalName());
-        for (int i = 0; i < journalNameWithLogins.getLogins().size(); i++) {
-            //holder.textViewLogins.uppend(journalNameWithLogins.getLogins().get(i));
+        Journal journal = listOfElements.get(position);
+        holder.textViewName.setText(journal.getJournalName());
+        StringBuilder logins = new StringBuilder();
+        for (int i = 0; i < journal.getLogins().size(); i++) {
+            logins.append(journal.getLogins().get(i).getLogin()).append(" ");
         }
-        holder.itemView.setOnClickListener(view -> presenter.onChangingClick(journalNameWithLogins.getJournalName()));
+        holder.textViewLogins.setText(logins);
+        holder.itemView.setOnClickListener(view -> presenter.onChangingClick(journal.getJournalName()));
     }
 
     @Override

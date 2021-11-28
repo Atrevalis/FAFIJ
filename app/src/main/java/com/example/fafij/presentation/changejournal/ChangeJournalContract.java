@@ -1,14 +1,18 @@
 package com.example.fafij.presentation.changejournal;
 
-import com.example.fafij.models.data.JournalNamesWithLoginsList;
+import com.example.fafij.models.data.Journal;
+
+import java.util.ArrayList;
 
 
 public interface ChangeJournalContract {
 
     interface ChangeJournalViewInterface {
-        void goToJournal();
-        void showToastConnectionError();
-        void showJournalsList(JournalNamesWithLoginsList journalNamesWithLoginsList);
+        void showToastError(int code);
+        void showToastException(String e);
+        void showJournalsList(ArrayList<Journal> journals);
+        void saveData(String journalName);
+        void goToBottomNavigation();
     }
 
     interface ChangeJournalPresenterInterface {

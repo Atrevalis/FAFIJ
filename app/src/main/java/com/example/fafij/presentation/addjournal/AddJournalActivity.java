@@ -1,6 +1,8 @@
 package com.example.fafij.presentation.addjournal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,27 +21,29 @@ public class AddJournalActivity extends AppCompatActivity implements AddJournalC
         binding = ActivityAddjournalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         AddJournalPresenter presenter = new AddJournalPresenter(this);
-        presenter.onAddJournalClick(binding.journalNameEdittext.getText().toString());
-    }
-
-    /**
-     * Показывает тост "Журнал с таким названием уже существует у вас" (ext)
-     */
-    @Override
-    public void showToastDuplicateError() {
+        binding.addJournal.setOnClickListener(view -> sendAddingJournalName());
 
     }
 
     /**
-     * Показывает тост "Отсутствует подключение к интернету" (ext)
+     * Отображает тост ошибки кодом (ext)
      */
     @Override
-    public void showToastConnectionError() {
+    public void showToast(int code) {
 
     }
 
-    public void sendAddingJournalName(View view) {
-        presenter.onAddJournalClick(binding.journalNameEdittext.getText().toString());
+    /**
+     * Отображает тост ошибки строкой (ext)
+     */
+    @Override
+    public void showToastException(String e) {
+
+    }
+
+    public void sendAddingJournalName() {
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        presenter.onAddJournalClick(sp.getString("login", ""), binding.journalNameEdittext.getText().toString());
     }
 
     public void onChangeJournalActivity() {

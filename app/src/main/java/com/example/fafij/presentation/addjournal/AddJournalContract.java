@@ -1,14 +1,18 @@
 package com.example.fafij.presentation.addjournal;
 
+import com.example.fafij.models.data.Journal;
+
+import java.util.ArrayList;
+
 public interface AddJournalContract {
 
     interface AddJournalViewInterface {
-        void showToastDuplicateError();
-        void showToastConnectionError();
+        void showToast(int code);
+        void showToastException(String e);
     }
 
     interface AddJournalPresenterInterface {
-        void onAddJournalClick(String journalName);
+        void onAddJournalClick(String login, String journalName);
     }
 
 }

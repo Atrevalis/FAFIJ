@@ -11,9 +11,10 @@ public interface LoginContract {
     interface LoginViewInterface {
         void showToastDataError();
         void showToastConnectionError();
-        void goToAddJournal();
+        void goToChangeJournal();
         void testSuccessMessage(int code);
         void testFailMessage(String exception);
+        void saveData(String login, String jwtToken);
         void testtest(String s);
     }
 

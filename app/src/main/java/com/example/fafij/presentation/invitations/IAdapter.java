@@ -59,9 +59,11 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.HolderI> {
     public void onBindViewHolder(@NonNull HolderI holder, int position) {
         Invitation invitation = listOfElements.get(position);
         holder.textViewName.setText(invitation.getJournalName());
+        StringBuilder logins = new StringBuilder();
         for (int i = 0; i < invitation.getLogins().size(); i++) {
-            //holder.textViewLogins.uppend(invitation.getLogins().get(i));
+            logins.append(invitation.getLogins().get(i).getLogin()).append(" ");
         }
+        holder.textViewLogins.setText(logins);
         holder.textViewRole.setText(invitation.getRole());
         holder.accept.setOnClickListener(view -> {
             presenter.onAcceptClick(invitation.getJournalName());

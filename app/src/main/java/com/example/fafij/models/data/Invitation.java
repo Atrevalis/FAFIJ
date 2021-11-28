@@ -22,14 +22,16 @@ public class Invitation {
         this.journalName = journalName;
     }
 
-    public ArrayList<String> getLogins() {
+
+    private String journalName;
+
+    public ArrayList<Login> getLogins() {
         return logins;
     }
 
-    public void setLogins(ArrayList<String> logins) {
+    public void setLogins(ArrayList<Login> logins) {
         this.logins = logins;
     }
 
-    private String journalName;
-    private ArrayList<String> logins;
+    private ArrayList<Login> logins;
 }

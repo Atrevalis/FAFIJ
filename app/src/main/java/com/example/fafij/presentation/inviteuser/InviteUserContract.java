@@ -3,12 +3,12 @@ package com.example.fafij.presentation.inviteuser;
 public interface InviteUserContract {
 
     interface InviteUserViewInterface {
-        void showInviteSuccessToast();
-        void showInviteFailToast();
+        void showToast(int code);
+        void showToastException(String e);
     }
 
     interface InviteUserPresenterInterface {
-        void onInviteClick(String login, boolean iAdult);
+        void onInviteClick(String journalName, String login, boolean iAdult);
     }
 
 }

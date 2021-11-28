@@ -17,8 +17,7 @@ tools:context=".presentation.addcategory.AddCategoryActivity"
         android:textSize="18sp"/>
 
     <Button
-        android:id="@+id/add_journal"
-        android:onClick="sendAddingCategoryName"
+        android:id="@+id/add_category_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_category"

@@ -1,6 +1,8 @@
 package com.example.fafij.presentation.inviteuser;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -35,27 +37,22 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
                     break;
             }
         });
+        binding.inviteButton.setOnClickListener(view -> sendInvitation());
     }
 
-    public void sendInvitation(View view) {
-        presenter.onInviteClick(binding.loginEditText.getText().toString(), isAdult);
+    public void sendInvitation() {
+        SharedPreferences sp = getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        presenter.onInviteClick(sp.getString("journalName", ""),binding.loginEditText.getText().toString(), isAdult);
+    }
+
+
+    @Override
+    public void showToast(int code) {
+
     }
 
     @Override
-    public void showInviteSuccessToast() {
-        Toast.makeText(
-                this,
-                "Приглашение успешно отправлено.",
-                Toast.LENGTH_SHORT
-        ).show();
-    }
+    public void showToastException(String e) {
 
-    @Override
-    public void showInviteFailToast() {
-        Toast.makeText(
-                this,
-                "Пользователь не найден.(??)",
-                Toast.LENGTH_SHORT
-        ).show();
     }
 }

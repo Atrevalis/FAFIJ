@@ -1,15 +1,16 @@
 package com.example.fafij.presentation.addcategory;
 
+import com.example.fafij.models.data.postbodies.CategoryLoginJournal;
+
 public interface AddCategoryContract {
 
     interface AddCategoryViewInterface {
-        void returnToCategories();
-        void showToastDuplicateError();
-        void showToastConnectionError();
+        void showToast(int code);
+        void showToastException(String e);
     }
 
     interface AddCategoryPresenterInterface {
-        void onAddCategory(String category);
+        void onAddCategory(CategoryLoginJournal categoryLoginJournal);
     }
 
 }

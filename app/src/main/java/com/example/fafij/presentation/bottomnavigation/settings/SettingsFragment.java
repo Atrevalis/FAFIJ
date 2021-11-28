@@ -1,7 +1,10 @@
 package com.example.fafij.presentation.bottomnavigation.settings;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,9 @@ import com.example.fafij.presentation.addjournal.AddJournalActivity;
 import com.example.fafij.presentation.changejournal.ChangeJournalActivity;
 import com.example.fafij.presentation.invitations.InvitationsActivity;
 import com.example.fafij.presentation.inviteuser.InviteUserActivity;
+import com.example.fafij.presentation.login.LoginActivity;
+
+import java.util.Objects;
 
 
 public class SettingsFragment extends Fragment implements SettingsContract.SettingsViewInterface {
@@ -40,25 +46,36 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
         super.onStart();
         binding = FragmentSettingsBinding.inflate(getLayoutInflater());
         presenter = new SettingsPresenter(this);
-        binding.changeJournal.setOnClickListener(view -> goToChangeJournal(getView()));
-        binding.addUser.setOnClickListener(view -> goToInviteUser(getView()));
-        binding.invitations.setOnClickListener(view -> goToInvitations(getView()));
-        binding.exit.setOnClickListener(view -> presenter.onExitClick());
+        binding.changeJournal.setOnClickListener(view -> goToChangeJournal());
+        binding.addUser.setOnClickListener(view -> goToInviteUser());
+        binding.invitations.setOnClickListener(view -> goToInvitations());
+        binding.exit.setOnClickListener(view -> goOut());
 
     }
 
-    public void goToChangeJournal(View view) {
+    public void goToChangeJournal() {
         Intent intent = new Intent(getActivity(), ChangeJournalActivity.class);
         startActivity(intent);
     }
 
-    public void goToInviteUser(View view) {
+    public void goToInviteUser() {
         Intent intent = new Intent(getActivity(), InviteUserActivity.class);
         startActivity(intent);
     }
 
-    public void goToInvitations(View view) {
+    public void goToInvitations() {
         Intent intent = new Intent(getActivity(), InvitationsActivity.class);
+        startActivity(intent);
+    }
+
+    public void goOut() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("journalName", "");
+        editor.putString("jwtToken", "");
+        editor.putString("login", "");
+        editor.apply();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
     }
 

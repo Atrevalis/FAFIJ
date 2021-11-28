@@ -35,7 +35,6 @@
         android:layout_width="match_parent">
     <Button
         android:id="@+id/login_button"
-        android:onClick="sendFormInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_enter"
@@ -43,8 +42,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/standard_button_style"/>
     <Button
-        android:id="@+id/or_registration_button"
-        android:onClick="goToRegistration"
+        android:id="@+id/registration_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

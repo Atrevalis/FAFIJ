@@ -1,6 +1,8 @@
 package com.example.fafij.presentation.bottomnavigation.journal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,15 +14,20 @@ import android.view.ViewGroup;
 
 import com.example.fafij.R;
 import com.example.fafij.databinding.FragmentJournalBinding;
-import com.example.fafij.models.data.NotesList;
+import com.example.fafij.models.data.Note;
+import com.example.fafij.models.data.postbodies.NoteLoginJournal;
 import com.example.fafij.presentation.addnote.AddNoteActivity;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class JournalFragment extends Fragment implements JournalContract.JournalViewInterface {
 
     FragmentJournalBinding binding;
     JournalPresenter presenter;
 
-    public JournalFragment() { }
+    public JournalFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +45,14 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
         super.onStart();
         binding = FragmentJournalBinding.inflate(getLayoutInflater());
         presenter = new JournalPresenter(this);
-        presenter.onLoad("логин(затычка)",0);//id journal тоже затычка
+        loadNotes();
         binding.addNoteButton.setOnClickListener(view -> goToAddNote());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadNotes();
     }
 
     /**
@@ -59,18 +72,36 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
 
 
     @Override
-    public void showNotes(NotesList notesList) {
+    public void showNotes(ArrayList<Note> notes) {
         RecyclerView recyclerView = binding.recyclerViewJournalNotes;
-        JAdapter adapter = new JAdapter(getContext(), notesList.getNotesList(), presenter);
+        JAdapter adapter = new JAdapter(getContext(), notes, presenter);
         recyclerView.setAdapter(adapter);
     }
 
-    /**
-     * Отображает тост "Отсутствует подключение к интернету" (ext)
-     */
     @Override
-    public void showToastConnectionError() {
+    public void showToast(int code) {
 
+    }
+
+    @Override
+    public void showToastException(String e) {
+
+    }
+
+    @Override
+    public NoteLoginJournal getData(long idNote) {
+        SharedPreferences sp = requireActivity()
+                .getApplicationContext()
+                .getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        return new NoteLoginJournal(idNote,sp.getString("login", ""), sp.getString("journalName", ""));
+    }
+
+    @Override
+    public void loadNotes() {
+        SharedPreferences sp = requireActivity()
+                .getApplicationContext()
+                .getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        presenter.onLoad(sp.getString("journalName", ""));
     }
 
 

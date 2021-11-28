@@ -2,7 +2,7 @@ package com.example.fafij.models.data;
 
 import java.util.ArrayList;
 
-public class JournalNameWithLogins {
+public class Journal {
 
     public String getJournalName() {
         return journalName;
@@ -12,15 +12,17 @@ public class JournalNameWithLogins {
         this.journalName = journalName;
     }
 
-    public ArrayList<String> getLogins() {
-        return logins;
-    }
-
-    public void setLogins(ArrayList<String> logins) {
-        this.logins = logins;
-    }
-
     private String journalName;
-    private ArrayList<String> logins;
+
+    public ArrayList<Login> getLogins() {
+        return Logins;
+    }
+
+    public void setLogins(ArrayList<Login> logins) {
+        Logins = logins;
+    }
+
+    private ArrayList<Login> Logins;
 
 }
+
