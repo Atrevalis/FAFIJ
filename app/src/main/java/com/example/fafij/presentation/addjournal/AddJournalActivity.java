@@ -1,41 +1,53 @@
 package com.example.fafij.presentation.addjournal;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fafij.R;
+import com.example.fafij.databinding.ActivityAddjournalBinding;
+import com.example.fafij.presentation.changejournal.ChangeJournalActivity;
 
 public class AddJournalActivity extends AppCompatActivity implements AddJournalContract.AddJournalViewInterface {
 
+    ActivityAddjournalBinding binding;
+    AddJournalPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityAddjournalBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         AddJournalPresenter presenter = new AddJournalPresenter(this);
-    }
-
-    /**
-     * Показывает тост "Журнал с таким названием уже существует у вас" (ext)
-     */
-    @Override
-    public void showToastDuplicateError() {
+        binding.addJournal.setOnClickListener(view -> sendAddingJournalName());
 
     }
 
     /**
-     * Показывает тост "Отсутствует подключение к интернету" (ext)
+     * Отображает тост ошибки кодом (ext)
      */
     @Override
-    public void showToastConnectionError() {
+    public void showToast(int code) {
 
     }
 
     /**
-     * Возвращает пользователя на экран (ext/int)
+     * Отображает тост ошибки строкой (ext)
      */
     @Override
-    public void returnToChanging() {
+    public void showToastException(String e) {
 
+    }
+
+    public void sendAddingJournalName() {
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        presenter.onAddJournalClick(sp.getString("login", ""), binding.journalNameEdittext.getText().toString());
+    }
+
+    public void onChangeJournalActivity() {
+        Intent intent = new Intent(this, ChangeJournalActivity.class);
+        startActivity(intent);
     }
 }

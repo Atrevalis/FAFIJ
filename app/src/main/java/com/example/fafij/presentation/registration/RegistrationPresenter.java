@@ -2,7 +2,9 @@ package com.example.fafij.presentation.registration;
 
 import android.os.AsyncTask;
 
-import org.json.JSONException;
+import com.example.fafij.models.Network.RetrofitApiClient;
+import com.example.fafij.models.data.postbodies.LoginPass;
+
 import org.json.JSONObject;
 
 import java.math.BigInteger;
@@ -18,6 +20,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class RegistrationPresenter implements RegistrationContract.RegistrationPresenterInterface {
 
@@ -76,7 +80,26 @@ public class RegistrationPresenter implements RegistrationContract.RegistrationP
      */
     @Override
     public void onRegistrationClick(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        new postRequest().execute(login, hashPass(password), "/registration");
+        LoginPass postRegIn = new LoginPass(login, hashPass(password));
+        Call<Void> call = RetrofitApiClient.getClient().registration(postRegIn);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
+                if(!response.isSuccessful()) {
+                    view.testSuccessMessage(response.code());
+                } else view.testSuccessMessage(response.code());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                view.testFailMessage(t.getLocalizedMessage());
+            }
+        });
+
+
+
+
+        //new postRequest().execute(login, hashPass(password), "/registration");
     }
 
     public static String hashPass(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {

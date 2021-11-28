@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_journal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.bottomnavigation.settings.SettingsFragment"
-    android:id="@+id/fragment_settings">
+    android:orientation="vertical"
+    tools:context=".presentation.bottomnavigation.settings.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/change_journal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/change_journal" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/add_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/add_user" />
+
+    <Button
+        android:id="@+id/invitations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/invitations" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/exit" />
+
+
+</LinearLayout>

@@ -5,4 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.changejournal.ChangeJournalActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_change_journal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/card_view_journal"/>
+
+    <Button
+        android:id="@+id/add_journal_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/add_journal"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

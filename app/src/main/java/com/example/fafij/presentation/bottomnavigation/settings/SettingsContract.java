@@ -7,7 +7,7 @@ public interface SettingsContract {
     }
 
     interface SettingsPresenterInterface {
-
+        //void onExitClick();
     }
 
 }

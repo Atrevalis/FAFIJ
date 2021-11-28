@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.fafij.R;
-import com.example.fafij.models.Journal;
-import com.example.fafij.presentation.bottomnavigation.journal.JournalContract;
 
 
 public class InfographicsFragment extends Fragment implements InfographicsContract.InfographicsViewInterface {
@@ -24,7 +22,7 @@ public class InfographicsFragment extends Fragment implements InfographicsContra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_journal, container, false);
+        return inflater.inflate(R.layout.fragment_infographics, container, false);
     }
 
 
