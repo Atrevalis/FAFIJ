@@ -13,8 +13,32 @@
         android:supportsRtl="true"
         android:exported="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.bottomnavigation.BottomNavigationActivity" >
-        </activity>
+        <activity android:name=".presentation.bottomnavigation.BottomNavigationActivity" />
+
+        <activity android:name=".presentation.changejournal.ChangeJournalActivity"
+            android:label="Сменить журнал"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.addjournal.AddJournalActivity"
+            android:label="Создать журнал"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.addcategory.AddCategoryActivity"
+            android:label="Создать категорию"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.addnote.AddNoteActivity"
+            android:label="Создать запись"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.editnote.EditNoteActivity"
+            android:label="Изменить запись"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.invitations.InvitationsActivity"
+            android:label="Приглашения"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.inviteuser.InviteUserActivity"
+            android:label="Пригласить пользователя"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.qrcode.QRCodeActivity"
+            android:label="QR-код"
+            android:screenOrientation="portrait"/>
         <activity android:name=".presentation.login.LoginActivity"
             android:label="FAFIJ"
             android:screenOrientation="portrait"

@@ -1,10 +1,10 @@
 package com.example.fafij.presentation.changejournal;
 
+import androidx.annotation.NonNull;
+
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.models.data.Login;
-import com.example.fafij.models.data.TokenCatch;
-import com.example.fafij.models.data.postbodies.LoginPass;
 
 import java.util.ArrayList;
 
@@ -42,13 +42,13 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
         Call<ArrayList<Journal>> call = RetrofitApiClient.getClient().userJournals(postLogin);
         call.enqueue(new Callback<ArrayList<Journal>>() {
             @Override
-            public void onResponse(Call<ArrayList<Journal>> call, Response<ArrayList<Journal>> response) {
+            public void onResponse(@NonNull Call<ArrayList<Journal>> call, @NonNull Response<ArrayList<Journal>> response) {
                 if (!response.isSuccessful()) {
                     view.showToastError(response.code());
                 } else view.showJournalsList(response.body());
             }
             @Override
-            public void onFailure(Call<ArrayList<Journal>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<Journal>> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
             }
         });

@@ -1,15 +1,18 @@
 package com.example.fafij.presentation.bottomnavigation;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.example.fafij.R;
-import com.example.fafij.databinding.ActivityAddjournalBinding;
+
 import com.example.fafij.databinding.ActivityBottomnavigationBinding;
 import com.example.fafij.presentation.bottomnavigation.categories.CategoriesFragment;
 import com.example.fafij.presentation.bottomnavigation.infographics.InfographicsFragment;
@@ -26,32 +29,14 @@ public class BottomNavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBottomnavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        BottomNavigationView bottomNavigationView = binding.bottomNavigationView;
-        bottomNavigationView.setOnNavigationItemSelectedListener(navigationListener);
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.journal_fragment, R.id.categories_fragment, R.id.infographics_fragment, R.id.settings_fragment)
+                .build();
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
     }
-
-    @SuppressLint("NonConstantResourceId")
-    private final BottomNavigationView.OnNavigationItemSelectedListener navigationListener =
-            menuItem -> {
-                Fragment selectedFragment = null;
-                switch (menuItem.getItemId()) {
-                    case R.id.fragment_journal:
-                        selectedFragment = new JournalFragment();
-                        break;
-                    case R.id.fragment_categories:
-                        selectedFragment = new CategoriesFragment();
-                        break;
-                    case R.id.fragment_infographics:
-                        selectedFragment = new InfographicsFragment();
-                        break;
-                    case R.id.fragment_settings:
-                        selectedFragment = new SettingsFragment();
-                        break;
-                }
-                assert selectedFragment != null;
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        selectedFragment).commit();
-
-                return true;
-            };
 }

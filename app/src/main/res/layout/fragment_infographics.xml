@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.bottomnavigation.infographics.InfographicsFragment"
-    android:id="@+id/fragment_infographics">
+    android:id="@+id/infographics_fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

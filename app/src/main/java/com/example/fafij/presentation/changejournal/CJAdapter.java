@@ -2,9 +2,11 @@ package com.example.fafij.presentation.changejournal;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -55,7 +57,8 @@ public class CJAdapter extends RecyclerView.Adapter<CJAdapter.HolderCJ> {
             logins.append(journal.getLogins().get(i).getLogin()).append(" ");
         }
         holder.textViewLogins.setText(logins);
-        holder.itemView.setOnClickListener(view -> presenter.onChangingClick(journal.getJournalName()));
+        Log.d("test1",journal.getJournalName());
+        holder.choose.setOnClickListener(view -> presenter.onChangingClick(journal.getJournalName()));
     }
 
     @Override
@@ -66,10 +69,13 @@ public class CJAdapter extends RecyclerView.Adapter<CJAdapter.HolderCJ> {
     protected static class HolderCJ extends RecyclerView.ViewHolder {
         final TextView textViewName, textViewLogins;
 
+        final Button choose;
+
         public HolderCJ(@NonNull View view) {
             super(view);
             textViewName = view.findViewById(R.id.journal_change_name);
             textViewLogins = view.findViewById(R.id.journal_change_logins);
+            choose = view.findViewById(R.id.choose_button);
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.fafij.presentation.addcategory;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +17,14 @@ import com.example.fafij.presentation.addjournal.AddJournalPresenter;
 public class AddCategoryActivity extends AppCompatActivity implements AddCategoryContract.AddCategoryViewInterface {
 
     ActivityAddcategoryBinding binding;
-    AddCategoryPresenter presenter;
+    AddCategoryPresenter presenter = new AddCategoryPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddcategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        AddCategoryPresenter presenter = new AddCategoryPresenter(this);
+
         binding.addCategoryButton.setOnClickListener(view -> sendAddingCategoryName());
 
     }
@@ -31,7 +32,7 @@ public class AddCategoryActivity extends AppCompatActivity implements AddCategor
 
     public void sendAddingCategoryName() {
 
-        SharedPreferences sp = getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onAddCategory(new CategoryLoginJournal(binding.addCategoryEdittext.getText().toString()
                 , sp.getString("login", ""), sp.getString("journalName", "")));
     }

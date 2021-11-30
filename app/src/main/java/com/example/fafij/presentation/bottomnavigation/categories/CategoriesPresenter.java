@@ -1,7 +1,11 @@
 package com.example.fafij.presentation.bottomnavigation.categories;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.fafij.models.Network.RetrofitApiClient;
-import com.example.fafij.models.data.Category;
+
 import com.example.fafij.models.data.postbodies.JournalName;
 
 import java.util.ArrayList;
@@ -28,7 +32,7 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
         Call<Void> call = RetrofitApiClient.getClient().deleteCategory(view.getData(category));
         call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
                 } else {
@@ -38,7 +42,7 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
             }
         });
@@ -47,18 +51,18 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
     @Override
     public void onLoad(String journalName) {
         JournalName postJournalName = new JournalName(journalName);
-        Call<ArrayList<Category>> call = RetrofitApiClient.getClient().listCategory(postJournalName);
-        call.enqueue(new Callback<ArrayList<Category>>() {
+        Call<ArrayList<String>> call = RetrofitApiClient.getClient().listCategory(postJournalName);
+        call.enqueue(new Callback<ArrayList<String>>() {
             @Override
-            public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
+            public void onResponse(@NonNull Call<ArrayList<String>> call, @NonNull Response<ArrayList<String>> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
                 } else view.showCategories(response.body());
             }
-
             @Override
-            public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<String>> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
+                Log.d("test1", t.getLocalizedMessage());
             }
         });
     }

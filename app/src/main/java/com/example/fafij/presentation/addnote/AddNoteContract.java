@@ -3,11 +3,13 @@ package com.example.fafij.presentation.addnote;
 public interface AddNoteContract {
 
     interface AddNoteViewInterface {
-        void returnToJournal();
+        void showToast(int code);
+        void showToastException(String e);
+
     }
 
     interface AddNotePresenterInterface {
-        void onAddClick(String category, long sum, boolean sing, String comment);
+        void onAddClick(String date, long sum, String category, String comment, String journalName);
     }
 
 }

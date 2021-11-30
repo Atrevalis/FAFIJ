@@ -2,7 +2,10 @@ package com.example.fafij.presentation.bottomnavigation.journal;
 
 
 
+import androidx.annotation.NonNull;
+
 import com.example.fafij.models.Network.RetrofitApiClient;
+import com.example.fafij.models.data.Category;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.models.data.Note;
 import com.example.fafij.models.data.postbodies.JournalName;
@@ -33,7 +36,7 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
         Call<Void> call = RetrofitApiClient.getClient().deleteNote(view.getData(id));
         call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
                 } else {
@@ -43,10 +46,15 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
 
             }
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
             }
         });
+    }
+
+    @Override
+    public void onEditClick(long id, String date, long sum, String comment, Category category) {
+        view.goToEditNote(id, date, sum, comment, category);
     }
 
     @Override

@@ -8,9 +8,16 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.fafij.R;
+import com.example.fafij.databinding.FragmentInfographicsBinding;
+import com.example.fafij.databinding.FragmentJournalBinding;
+import com.example.fafij.databinding.FragmentSettingsBinding;
+import com.example.fafij.presentation.bottomnavigation.journal.JournalPresenter;
 
 
 public class InfographicsFragment extends Fragment implements InfographicsContract.InfographicsViewInterface {
+
+    FragmentInfographicsBinding binding;
+    InfographicsPresenter presenter;
 
     public InfographicsFragment() { }
 
@@ -22,7 +29,9 @@ public class InfographicsFragment extends Fragment implements InfographicsContra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_infographics, container, false);
+        binding = FragmentInfographicsBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        return root;
     }
 
 

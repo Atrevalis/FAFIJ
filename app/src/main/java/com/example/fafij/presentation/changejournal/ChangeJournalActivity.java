@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +27,9 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
         super.onCreate(savedInstanceState);
         binding = ActivityChangejournalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ChangeJournalPresenter presenter = new ChangeJournalPresenter(this);
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        presenter = new ChangeJournalPresenter(this);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!sp.getString("journalName", "").equals("")) goToBottomNavigation();
         presenter.onLoad(sp.getString("login", ""));
         binding.addJournalButton.setOnClickListener(view -> goToAddJournal());
 
@@ -37,7 +39,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onLoad(sp.getString("login", ""));
     }
 

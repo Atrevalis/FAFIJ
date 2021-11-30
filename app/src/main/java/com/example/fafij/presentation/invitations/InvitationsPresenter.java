@@ -1,5 +1,7 @@
 package com.example.fafij.presentation.invitations;
 
+import androidx.annotation.NonNull;
+
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Invitation;
 import com.example.fafij.models.data.Login;
@@ -20,12 +22,34 @@ public class InvitationsPresenter implements InvitationsContract.InvitationsPres
 
     @Override
     public void onAcceptClick(String journalName) {
+        Call<Void> call = RetrofitApiClient.getClient().accept(view.getData(journalName));
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                view.showToast(response.code());
+            }
 
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                view.showToastException(t.getLocalizedMessage());
+            }
+        });
     }
 
     @Override
     public void onRefuseClick(String journalName) {
+        Call<Void> call = RetrofitApiClient.getClient().decline(view.getData(journalName));
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                view.showToast(response.code());
+            }
 
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                view.showToastException(t.getLocalizedMessage());
+            }
+        });
     }
 
     @Override

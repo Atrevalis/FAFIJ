@@ -1,21 +1,29 @@
 package com.example.fafij.models.data;
 
 public class Note {
-    private int id;
+    private long id;
 
-    public int getId() {
+    public Note(long id, String date, long sum, String comment, Category category) {
+        this.id = id;
+        this.date = date;
+        this.sum = sum;
+        this.comment = comment;
+        this.category = category;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getSum() {
+    public long getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(long sum) {
         this.sum = sum;
     }
 
@@ -27,11 +35,11 @@ public class Note {
         this.comment = comment;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -44,8 +52,8 @@ public class Note {
     }
 
     private String date;
-    private int sum;
+    private long sum;
     private String comment;
-    private String category;
+    private Category category;
 
 }

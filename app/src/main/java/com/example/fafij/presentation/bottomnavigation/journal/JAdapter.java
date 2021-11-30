@@ -54,21 +54,21 @@ public class JAdapter extends RecyclerView.Adapter<JAdapter.HolderJ> {
         return new HolderJ(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull HolderJ holder, int position) {
         Note note = listOfElements.get(position);
-        holder.textId.setText(note.getId());
+        holder.textId.setText(Long.toString(note.getId()));
         holder.textDate.setText(note.getDate());
-        holder.textSum.setText(note.getSum());
-        holder.textCategory.setText(note.getCategory());
+        holder.textSum.setText(Long.toString(note.getSum()));
+        holder.textCategory.setText(note.getCategory().getName());
         holder.textComment.setText(note.getComment());
         holder.delete.setOnClickListener(view -> {
             presenter.onDeleteClick(note.getId());
             deleteElement(position);
         });
-        //редактирование -- реализовать
         holder.edit.setOnClickListener(view -> {
-            presenter.onDeleteClick(note.getId());
+            presenter.onEditClick(note.getId(), note.getDate(), note.getSum(), note.getComment(), note.getCategory());
             deleteElement(position);
         });
     }

@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.fafij.FafijApp;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,9 +32,10 @@ public class RetrofitApiClient {
                 Request request = chain.request().newBuilder().addHeader("Authorization", finalHeader).build();
                 return chain.proceed(request);
             });
+            Gson gson = new GsonBuilder().setLenient().create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(client.build())
                     .build();
         }

@@ -4,10 +4,12 @@ public interface EditNoteContract {
 
     interface EditNoteViewInterface {
         void returnToJournal();
+        void showToast(int code);
+        void showToastException(String e);
     }
 
     interface EditNotePresenterInterface {
-        void onSubmitClick(int id, String category, long sum, boolean sing, String comment);
+        void onSubmitClick(long id, String date, long sum, String category, String comment, String journalName);
     }
 
 }
