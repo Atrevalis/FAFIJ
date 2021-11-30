@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.example.fafij.models.data.postbodies.CategoryLoginJournal;
 import com.example.fafij.models.data.postbodies.LoginJournal;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class InvitationsActivity extends AppCompatActivity implements InvitationsContract.InvitationsViewInterface {
 
@@ -24,6 +26,7 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
         super.onCreate(savedInstanceState);
         binding = ActivityInvitationsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onLoad(sp.getString("login", ""));
 
@@ -44,7 +47,11 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
 
     @Override
     public void showToastException(String e) {
-
+        Toast.makeText(
+                this,
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override

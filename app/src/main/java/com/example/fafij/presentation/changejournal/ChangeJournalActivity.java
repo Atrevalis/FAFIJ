@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.example.fafij.presentation.addjournal.AddJournalActivity;
 import com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ChangeJournalActivity extends AppCompatActivity implements ChangeJournalContract.ChangeJournalViewInterface {
 
@@ -29,7 +31,17 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
         setContentView(binding.getRoot());
         presenter = new ChangeJournalPresenter(this);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!sp.getString("journalName", "").equals("")) goToBottomNavigation();
+        /*if (getIntent().hasExtra("changing")) {
+            if (!getIntent().getExtras().getBoolean("changing", false)) {
+                if (!sp.getString("journalName", "").equals("")) goToBottomNavigation();
+            }
+        } else {
+            if (!sp.getString("journalName", "").equals("")) goToBottomNavigation();
+        }*/
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        /*if (getIntent().hasExtra("changing")) {
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        }*/
         presenter.onLoad(sp.getString("login", ""));
         binding.addJournalButton.setOnClickListener(view -> goToAddJournal());
 
@@ -70,7 +82,12 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
      */
     @Override
     public void showToastError(int code) {
-
+        String toast = "Неизвестная ошибка";
+        Toast.makeText(
+                this,
+                toast,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     /**
@@ -78,7 +95,11 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
      */
     @Override
     public void showToastException(String e) {
-
+        Toast.makeText(
+                this,
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     /**

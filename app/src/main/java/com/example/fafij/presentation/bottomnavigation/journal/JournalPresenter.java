@@ -37,13 +37,8 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    view.showToast(response.code());
-                } else {
-                    view.showToast(response.code());
-                    view.loadNotes();
-                }
-
+                view.showToast(response.code());
+                view.loadNotes();
             }
             @Override
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
@@ -66,7 +61,8 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
             public void onResponse(Call<ArrayList<Note>> call, Response<ArrayList<Note>> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
-                } else view.showNotes(response.body());
+                }
+                view.showNotes(response.body());
             }
 
             @Override

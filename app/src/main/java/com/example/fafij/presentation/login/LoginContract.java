@@ -9,13 +9,10 @@ import java.security.spec.InvalidKeySpecException;
 public interface LoginContract {
 
     interface LoginViewInterface {
-        void showToastDataError();
-        void showToastConnectionError();
         void goToChangeJournal();
-        void testSuccessMessage(int code);
-        void testFailMessage(String exception);
+        void showToast(int code);
+        void showToastException(String exception);
         void saveData(String login, String jwtToken);
-        void testtest(String s);
     }
 
     interface LoginPresenterInterface {

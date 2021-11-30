@@ -7,6 +7,7 @@ public interface AddCategoryContract {
     interface AddCategoryViewInterface {
         void showToast(int code);
         void showToastException(String e);
+        void finishActivity();
     }
 
     interface AddCategoryPresenterInterface {

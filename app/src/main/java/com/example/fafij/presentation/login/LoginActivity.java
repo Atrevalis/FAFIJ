@@ -53,26 +53,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
 
     @Override
-    public void testSuccessMessage(int code) {
+    public void showToast(int code) {
         String toast = "";
-        if (code == 0) toast = "Неизвестная ошибка";
-        if (code == 201) toast = "Аккаунт создан";
-        if (code == 202) toast = "Вход успешен";
-        if (code == 406) toast = "Ошибка входа. Неправильное имя пользователя или пароль.";
-        if (code == 500) toast = "Пользователь уже существует.";
-        if (code == 401) toast = "Очередная хуйня";
+        if (code == 0 || code == 500) toast = "Неизвестная ошибка";
+        if (code == 401) toast = "Неверное имя пользователя или пароль";
         Toast.makeText(
                 this,
-                code + ": " + toast,
+                toast,
                 Toast.LENGTH_SHORT
         ).show();
     }
 
     @Override
-    public void testFailMessage(String exception) {
+    public void showToastException(String exception) {
         Toast.makeText(
                 this,
-                "Произошла ошибка: " + exception,
+                exception,
                 Toast.LENGTH_SHORT
         ).show();
     }
@@ -84,31 +80,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         editor.putString("login", login);
         editor.putString("jwtToken", jwtToken);
         editor.apply();
-    }
-
-    @Override
-    public void testtest(String s) {
-        Toast.makeText(
-                this,
-                s,
-                Toast.LENGTH_SHORT
-        ).show();
-    }
-
-    /**
-     * Отображает тост "Данные не верны" (ext)
-     */
-    @Override
-    public void showToastDataError() {
-
-    }
-
-    /**
-     * Отображает тост "Отсутствует подключение к интернету" (ext)
-     */
-    @Override
-    public void showToastConnectionError() {
-
     }
 
     /**

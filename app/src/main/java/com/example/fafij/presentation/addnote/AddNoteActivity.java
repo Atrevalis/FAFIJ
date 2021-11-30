@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.example.fafij.presentation.addjournal.AddJournalPresenter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class AddNoteActivity extends AppCompatActivity implements AddNoteContract.AddNoteViewInterface {
 
@@ -27,6 +29,7 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
         super.onCreate(savedInstanceState);
         binding = ActivityAddnoteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         binding.addNoteButton.setOnClickListener(view -> sendAddingNote());
 
 
@@ -50,6 +53,18 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
     }
 
     public void sendAddingNote() {
+        if (binding.categoryNameEdittext.getText().toString().equals("") && binding.noteSumEdittext.getText().toString().equals("")) {
+            showToastException("Введите денежную сумму и категорию");
+            return;
+        }
+        if (binding.categoryNameEdittext.getText().toString().equals("")) {
+            showToastException("Введите категорию");
+            return;
+        }
+        if (binding.noteSumEdittext.getText().toString().equals("")) {
+            showToastException("Введите денежную сумму");
+            return;
+        }
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onAddClick(
                 getDate(),
@@ -70,11 +85,26 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
 
     @Override
     public void showToast(int code) {
-
+        String toast = "";
+        if (code == 500) toast = "Категория не найдена";
+        Toast.makeText(
+                this,
+                toast,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override
     public void showToastException(String e) {
+        Toast.makeText(
+                this,
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
+    }
 
+    @Override
+    public void finishActivity() {
+        finish();
     }
 }

@@ -1,6 +1,8 @@
 package com.example.fafij.presentation.login;
 
 
+import androidx.annotation.NonNull;
+
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -35,13 +37,17 @@ public class LoginPresenter implements LoginContract.LoginPresenterInterface {
      */
     @Override
     public void onAuthorizationClick(String login, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        if (login.equals("") || password.equals("")) {
+            view.showToastException("Введите полные данные");
+            return;
+        }
         LoginPass postLoginPass = new LoginPass(login, hashPass(password));
         Call<TokenCatch> call = RetrofitApiClient.getClient().login(postLoginPass);
         call.enqueue(new Callback<TokenCatch>() {
             @Override
-            public void onResponse(Call<TokenCatch> call, retrofit2.Response<TokenCatch> response) {
+            public void onResponse(@NonNull Call<TokenCatch> call, @NonNull retrofit2.Response<TokenCatch> response) {
                 if(!response.isSuccessful()) {
-                    view.testSuccessMessage(response.code());
+                    view.showToast(response.code());
                 } else {
                     assert response.body() != null;
                     view.saveData(login, response.body().getJwtToken());
@@ -49,8 +55,8 @@ public class LoginPresenter implements LoginContract.LoginPresenterInterface {
                 }
             }
             @Override
-            public void onFailure(Call<TokenCatch> call, Throwable t) {
-                view.testFailMessage(t.getLocalizedMessage());
+            public void onFailure(@NonNull Call<TokenCatch> call, @NonNull Throwable t) {
+                view.showToastException(t.getLocalizedMessage());
             }
         });
     }

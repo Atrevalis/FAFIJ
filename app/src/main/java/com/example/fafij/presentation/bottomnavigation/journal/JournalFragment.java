@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.fafij.R;
 import com.example.fafij.databinding.FragmentJournalBinding;
@@ -94,12 +95,23 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
 
     @Override
     public void showToast(int code) {
-
+        String toast = "";
+        if (code == 406) toast = "Недостаточно прав";
+        if (code == 201) toast = "Запись удалена";
+        Toast.makeText(
+                getContext(),
+                toast,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override
     public void showToastException(String e) {
-
+        Toast.makeText(
+                requireActivity(),
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override
@@ -124,7 +136,7 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
         intent.putExtra("sum", sum);
         intent.putExtra("comment", comment);
         intent.putExtra("category", category.getName());
-        intent.putExtra("journalName", sp.getString("journalName", ""));
+        intent.putExtra("login", sp.getString("login", ""));
         startActivity(intent);
     }
 

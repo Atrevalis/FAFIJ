@@ -9,13 +9,8 @@ import java.security.spec.InvalidKeySpecException;
 public interface RegistrationContract {
 
     interface RegistrationViewInterface {
-        void showToastDuplicateError();
-        void showToastDataError();
-        void showToastConnectionError();
-        void goToAddJournal();
-        void testSuccessMessage(int code);
-        void testFailMessage(String exception);
-        void testtest(String s);
+        void showToast(int code);
+        void showToastException(String exception);
     }
 
     interface RegistrationPresenterInterface {

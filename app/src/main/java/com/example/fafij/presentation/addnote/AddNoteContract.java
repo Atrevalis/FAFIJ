@@ -5,6 +5,7 @@ public interface AddNoteContract {
     interface AddNoteViewInterface {
         void showToast(int code);
         void showToastException(String e);
+        void finishActivity();
 
     }
 

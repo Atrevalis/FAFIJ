@@ -7,6 +7,22 @@
     android:orientation="vertical"
     tools:context=".presentation.bottomnavigation.settings.SettingsFragment">
 
+
+    <TextView
+        android:id="@+id/current_journal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/current_journal" />
+
+    <TextView
+        android:id="@+id/current_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/current_login" />
+
+
     <Button
         android:id="@+id/change_journal"
         android:layout_width="match_parent"

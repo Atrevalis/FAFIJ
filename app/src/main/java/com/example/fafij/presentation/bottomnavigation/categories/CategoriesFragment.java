@@ -89,16 +89,23 @@ public class CategoriesFragment extends Fragment implements CategoriesContract.C
 
     @Override
     public void showToast(int code) {
-        String s = String.valueOf(code);
+        String toast = "";
+        if (code == 500) toast = "Неизвестная ошибка";
+        if (code == 406) toast = "Недостаточно прав";
+        if (code == 201) toast = "Категория удалена";
         Toast.makeText(
                 getContext(),
-                s + " Ошибка",
+                toast,
                 Toast.LENGTH_SHORT
         ).show();
     }
 
     @Override
     public void showToastException(String e) {
-
+        Toast.makeText(
+                requireActivity(),
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 }

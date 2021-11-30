@@ -15,6 +15,8 @@ import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityInvitationsBinding;
 import com.example.fafij.databinding.ActivityInviteuserBinding;
 
+import java.util.Objects;
+
 public class InviteUserActivity extends AppCompatActivity implements InviteUserContract.InviteUserViewInterface {
 
     InviteUserPresenter presenter = new InviteUserPresenter(this);
@@ -27,6 +29,7 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
         super.onCreate(savedInstanceState);
         binding = ActivityInviteuserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         binding.radioButtonsRole.setOnCheckedChangeListener((radioGroup, r_id) -> {
             switch(r_id){
                 case R.id.adult:
@@ -41,6 +44,10 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
     }
 
     public void sendInvitation() {
+        if (binding.loginEditText.getText().toString().equals("")) {
+            showToastException("Введите логин пользователя");
+            return;
+        }
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onInviteClick(sp.getString("journalName", ""),binding.loginEditText.getText().toString(), isAdult);
     }
@@ -48,12 +55,25 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
 
     @Override
     public void showToast(int code) {
-
+        String toast = "";
+        if (code == 406) toast = "Пользователь не найден";
+        if (code == 500) toast = "Неизвестная ошибка";
+        if (code == 409) toast = "Пользователь уже использует этот журнал";
+        if (code == 201) toast = "Приглашение отправлено";
+        Toast.makeText(
+                this,
+                toast,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override
     public void showToastException(String e) {
-
+        Toast.makeText(
+                this,
+                e,
+                Toast.LENGTH_SHORT
+        ).show();
     }
 
     @Override

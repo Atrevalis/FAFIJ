@@ -17,25 +17,60 @@
 
         <activity android:name=".presentation.changejournal.ChangeJournalActivity"
             android:label="Сменить журнал"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.addjournal.AddJournalActivity"
             android:label="Создать журнал"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.changejournal.ChangeJournalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.changejournal.ChangeJournalActivity"/>
+        </activity>
         <activity android:name=".presentation.addcategory.AddCategoryActivity"
             android:label="Создать категорию"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.addnote.AddNoteActivity"
             android:label="Создать запись"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.editnote.EditNoteActivity"
             android:label="Изменить запись"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.invitations.InvitationsActivity"
             android:label="Приглашения"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.inviteuser.InviteUserActivity"
             android:label="Пригласить пользователя"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.bottomnavigation.BottomNavigationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity"/>
+        </activity>
         <activity android:name=".presentation.qrcode.QRCodeActivity"
             android:label="QR-код"
             android:screenOrientation="portrait"/>
@@ -51,7 +86,11 @@
         </activity>
         <activity android:name=".presentation.registration.RegistrationActivity"
             android:label="Регистрация"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.login.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.login.LoginActivity"/>
         </activity>
     </application>
 

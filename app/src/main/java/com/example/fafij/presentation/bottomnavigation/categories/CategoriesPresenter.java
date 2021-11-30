@@ -33,12 +33,8 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                if (!response.isSuccessful()) {
-                    view.showToast(response.code());
-                } else {
-                    view.showToast(response.code());
-                    view.loadCategories();
-                }
+                view.showToast(response.code());
+                view.loadCategories();
             }
 
             @Override
@@ -62,7 +58,6 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
             @Override
             public void onFailure(@NonNull Call<ArrayList<String>> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
-                Log.d("test1", t.getLocalizedMessage());
             }
         });
     }

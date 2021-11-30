@@ -21,8 +21,8 @@ public class EditNotePresenter implements EditNoteContract.EditNotePresenterInte
 
 
     @Override
-    public void onSubmitClick(long id, String date, long sum, String category, String comment, String journalName) {
-        NoteEdit noteEdit = new NoteEdit(id, date, sum, category, comment, journalName);
+    public void onSubmitClick(long id, String date, long sum, String category, String comment, String login) {
+        NoteEdit noteEdit = new NoteEdit(id, date, sum, category, comment, login);
         Call<Void> call = RetrofitApiClient.getClient().updateNote(noteEdit);
         call.enqueue(new Callback<Void>() {
             @Override

@@ -69,7 +69,6 @@ public class JAdapter extends RecyclerView.Adapter<JAdapter.HolderJ> {
         });
         holder.edit.setOnClickListener(view -> {
             presenter.onEditClick(note.getId(), note.getDate(), note.getSum(), note.getComment(), note.getCategory());
-            deleteElement(position);
         });
     }
 

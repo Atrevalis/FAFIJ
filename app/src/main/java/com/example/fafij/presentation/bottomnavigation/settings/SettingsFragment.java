@@ -41,6 +41,9 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        binding.currentJournal.append(sp.getString("journalName", ""));
+        binding.currentLogin.append(sp.getString("login", ""));
         binding.changeJournal.setOnClickListener(view -> goToChangeJournal());
         binding.addUser.setOnClickListener(view -> goToInviteUser());
         binding.invitations.setOnClickListener(view -> goToInvitations());
@@ -62,6 +65,7 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
 
     public void goToChangeJournal() {
         Intent intent = new Intent(getActivity(), ChangeJournalActivity.class);
+        intent.putExtra("changing", true);
         startActivity(intent);
     }
 
@@ -85,5 +89,6 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
     }
+
 
 }

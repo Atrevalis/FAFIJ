@@ -27,6 +27,9 @@ public class AddNotePresenter implements AddNoteContract.AddNotePresenterInterfa
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if (response.isSuccessful()) {
+                    view.finishActivity();
+                }
                 view.showToast(response.code());
             }
 

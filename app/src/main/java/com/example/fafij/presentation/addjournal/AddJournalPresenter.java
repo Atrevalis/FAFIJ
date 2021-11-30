@@ -24,13 +24,17 @@ public class AddJournalPresenter implements AddJournalContract.AddJournalPresent
      */
     @Override
     public void onAddJournalClick(String login, String journalName) {
+        if (journalName.equals("")) {
+            view.showToastException("Введите название журнала");
+            return;
+        }
         LoginJournal loginJournal = new LoginJournal(login, journalName);
         Call<Void> call = RetrofitApiClient.getClient().createJournal(loginJournal);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                view.showToast(response.code());
-                if (response.isSuccessful()) view.returnToChange();
+                if (!response.isSuccessful()) view.showToast(response.code());
+                else view.returnToChange();
             }
 
             @Override

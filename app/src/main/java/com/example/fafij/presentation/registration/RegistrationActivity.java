@@ -17,16 +17,17 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity implements RegistrationContract.RegistrationViewInterface {
 
-    RegistrationPresenter presenter;
     ActivityRegistrationBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         RegistrationPresenter presenter = new RegistrationPresenter(this);
         binding.registrationButton.setOnClickListener(view -> {
             try {
@@ -38,80 +39,27 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     }
 
-    /**
-     * Отправляет в презентер данные из форм (int)
-     */
-    /*public void sendFormInfo(View view) throws JSONException, InvalidKeySpecException, NoSuchAlgorithmException {
-        EditText login = (EditText)findViewById(R.id.registration_edittext_login);
-        EditText password = (EditText)findViewById(R.id.registration_edittext_password);
-        String loginString = login.getText().toString();
-        String passwordString = password.getText().toString();
-        presenter.onRegistrationClick(loginString, passwordString);
-    }*/
 
     @Override
-    public void testSuccessMessage(int code){
+    public void showToast(int code){
         String toast = "";
-        if (code == 0) toast = "Неизвестная ошибка";
+        if (code == 0 || code == 500) toast = "Неизвестная ошибка";
         if (code == 201) toast = "Аккаунт создан";
-        if (code == 202) toast = "Вход успешен";
-        if (code == 406) toast = "Ошибка входа. Неправильное имя пользователя или пароль.";
-        if (code == 500) toast = "Пользователь уже существует.";
-        if (code == 401) toast = "Очередная хуйня";
+        if (code == 500) toast = "Пользователь уже существует";
         Toast.makeText(
                 this,
-                code + ": "+ toast,
+                toast,
                 Toast.LENGTH_SHORT
         ).show();
     }
 
     @Override
-    public void testFailMessage(String exception) {
+    public void showToastException(String exception) {
         Toast.makeText(
                 this,
-                "Произошла ошибка: " + exception,
+                exception,
                 Toast.LENGTH_SHORT
         ).show();
     }
 
-    @Override
-    public void testtest(String s) {
-        Toast.makeText(
-                this,
-                s,
-                Toast.LENGTH_SHORT
-        ).show();
-    }
-
-    /**
-     * Отображает тост "Пользователь с таким логином уже существует" (ext)
-     */
-    @Override
-    public void showToastDuplicateError() {
-
-    }
-
-    /**
-     * Отображает тост "Логин или пароль не соответствуют стандартам" (ext)
-     */
-    @Override
-    public void showToastDataError() {
-
-    }
-
-    /**
-     * Отображает тост "Отсутствует подключение к интернету" (ext)
-     */
-    @Override
-    public void showToastConnectionError() {
-
-    }
-
-    /**
-     * Перенаправляет на экран AddJournal (ext)
-     */
-    @Override
-    public void goToAddJournal() {
-
-    }
 }
