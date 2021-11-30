@@ -1,12 +1,21 @@
 package com.example.fafij.models.data.postbodies;
 
-public class NotePost {
+public class NoteEdit {
+
+    private long id;
     private String date;
     private long sum;
     private String category;
     private String comment;
     private String journalName;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getJournalName() {
         return journalName;
     }
@@ -47,7 +56,8 @@ public class NotePost {
         this.comment = comment;
     }
 
-    public NotePost(String date, long sum, String category, String comment, String journalName) {
+    public NoteEdit(long id, String date, long sum, String category, String comment, String journalName) {
+        this.id = id;
         this.date = date;
         this.sum = sum;
         this.category = category;

@@ -1,6 +1,7 @@
 package com.example.fafij.presentation.invitations;
 
 import com.example.fafij.models.data.Invitation;
+import com.example.fafij.models.data.postbodies.LoginJournal;
 
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public interface InvitationsContract {
         void showInvitations(ArrayList<Invitation> invitations);
         void showToast(int code);
         void showToastException(String e);
+        LoginJournal getData(String journalName);
     }
 
     interface InvitationsPresenterInterface {

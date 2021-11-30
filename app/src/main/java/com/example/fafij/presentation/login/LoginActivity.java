@@ -16,6 +16,7 @@ import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityInviteuserBinding;
 import com.example.fafij.databinding.ActivityLoginBinding;
 import com.example.fafij.presentation.addjournal.AddJournalActivity;
+import com.example.fafij.presentation.changejournal.ChangeJournalActivity;
 import com.example.fafij.presentation.inviteuser.InviteUserPresenter;
 import com.example.fafij.presentation.registration.RegistrationActivity;
 
@@ -33,12 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FafijApp.context = this;
-        SharedPreferences sp = getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("journalName", "");
-        editor.putString("jwtToken", "");
-        editor.putString("login", "");
-        editor.apply();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         if (!sp.getString("login", "").equals("")) goToChangeJournal();
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -120,7 +116,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
      */
     @Override
     public void goToChangeJournal() {
-        startActivity(new Intent(this, AddJournalActivity.class));
+        startActivity(new Intent(this, ChangeJournalActivity.class));
     }
 
     /**

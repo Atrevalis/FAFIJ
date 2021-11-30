@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.R;
-import com.example.fafij.models.data.Category;
+
 
 
 import java.util.ArrayList;
@@ -21,17 +21,17 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
 
     private final LayoutInflater inflater;
 
-    ArrayList<Category> listOfElements;
+    ArrayList<String> listOfElements;
     private final CategoriesPresenter presenter;
 
-    CAdapter(Context context, ArrayList<Category> listOfElements, CategoriesPresenter presenter) {
+    CAdapter(Context context, ArrayList<String> listOfElements, CategoriesPresenter presenter) {
         this.listOfElements = listOfElements;
         this.inflater = LayoutInflater.from(context);
         this.presenter = presenter;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void addElement(Category element) {
+    public void addElement(String element) {
         listOfElements.add(element);
         notifyDataSetChanged();
     }
@@ -57,10 +57,10 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderC holder, int position) {
-        Category category = listOfElements.get(position);
-        holder.textCategory.setText(category.getCategoryName());
+        String category = listOfElements.get(position);
+        holder.textCategory.setText(category);
         holder.delete.setOnClickListener(view -> {
-            presenter.onDeleteClick(category.getCategoryName());
+            presenter.onDeleteClick(category);
             deleteElement(position);
         });
     }

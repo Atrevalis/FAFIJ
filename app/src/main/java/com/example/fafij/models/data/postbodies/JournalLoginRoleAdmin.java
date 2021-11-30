@@ -1,9 +1,10 @@
 package com.example.fafij.models.data.postbodies;
 
-public class JournalLoginRole {
+public class JournalLoginRoleAdmin {
     private String journalName;
     private String login;
     private String role;
+    private String admin;
 
     public String getJournalName() {
         return journalName;
@@ -29,9 +30,18 @@ public class JournalLoginRole {
         this.role = role;
     }
 
-    public JournalLoginRole(String journalName, String login, String role) {
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
+
+    public JournalLoginRoleAdmin(String journalName, String login, String role, String admin) {
         this.journalName = journalName;
         this.login = login;
         this.role = role;
+        this.admin = admin;
     }
 }

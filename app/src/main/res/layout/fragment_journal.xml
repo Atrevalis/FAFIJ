@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.bottomnavigation.journal.JournalFragment"
-    android:id="@+id/fragment_journal">
+    android:id="@+id/journal_fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_journal_notes"

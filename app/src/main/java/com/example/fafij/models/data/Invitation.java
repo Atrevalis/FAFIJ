@@ -1,37 +1,30 @@
 package com.example.fafij.models.data;
 
-import java.util.ArrayList;
+
+import com.example.fafij.models.data.postbodies.JournalName;
 
 public class Invitation {
 
-    public String getRole() {
-        return role;
-    }
+    private JournalName journalName;
+    private Role role;
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    private String role;
-
-    public String getJournalName() {
+    public JournalName getJournalName() {
         return journalName;
     }
 
-    public void setJournalName(String journalName) {
+    public void setJournalName(JournalName journalName) {
         this.journalName = journalName;
     }
 
-
-    private String journalName;
-
-    public ArrayList<Login> getLogins() {
-        return logins;
+    public Role getRole() {
+        return role;
     }
 
-    public void setLogins(ArrayList<Login> logins) {
-        this.logins = logins;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    private ArrayList<Login> logins;
+
 }
+
+

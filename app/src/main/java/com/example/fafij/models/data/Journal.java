@@ -15,14 +15,14 @@ public class Journal {
     private String journalName;
 
     public ArrayList<Login> getLogins() {
-        return Logins;
+        return logins;
     }
 
     public void setLogins(ArrayList<Login> logins) {
-        Logins = logins;
+        this.logins = logins;
     }
 
-    private ArrayList<Login> Logins;
+    private ArrayList<Login> logins;
 
 }
 

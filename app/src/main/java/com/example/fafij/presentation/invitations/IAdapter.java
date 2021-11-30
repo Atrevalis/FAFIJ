@@ -58,19 +58,15 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.HolderI> {
     @Override
     public void onBindViewHolder(@NonNull HolderI holder, int position) {
         Invitation invitation = listOfElements.get(position);
-        holder.textViewName.setText(invitation.getJournalName());
+        holder.textViewName.setText(invitation.getJournalName().getJournalName());
         StringBuilder logins = new StringBuilder();
-        for (int i = 0; i < invitation.getLogins().size(); i++) {
-            logins.append(invitation.getLogins().get(i).getLogin()).append(" ");
-        }
-        holder.textViewLogins.setText(logins);
-        holder.textViewRole.setText(invitation.getRole());
+        holder.textViewRole.setText(invitation.getRole().getName());
         holder.accept.setOnClickListener(view -> {
-            presenter.onAcceptClick(invitation.getJournalName());
+            presenter.onAcceptClick(invitation.getJournalName().getJournalName());
             deleteElement(position);
         });
         holder.refuse.setOnClickListener(view -> {
-            presenter.onRefuseClick(invitation.getJournalName());
+            presenter.onRefuseClick(invitation.getJournalName().getJournalName());
             deleteElement(position);
         });
     }
@@ -81,13 +77,12 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.HolderI> {
     }
 
     protected static class HolderI extends RecyclerView.ViewHolder {
-        TextView textViewName, textViewLogins, textViewRole;
+        TextView textViewName, textViewRole;
         Button accept, refuse;
 
         public HolderI(@NonNull View view) {
             super(view);
             textViewName = view.findViewById(R.id.invitations_name);
-            textViewLogins = view.findViewById(R.id.invitations_logins);
             textViewRole = view.findViewById(R.id.invitations_role);
             refuse = view.findViewById(R.id.refuse_button);
             accept = view.findViewById(R.id.accept_button);

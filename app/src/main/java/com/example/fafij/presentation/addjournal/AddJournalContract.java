@@ -9,6 +9,7 @@ public interface AddJournalContract {
     interface AddJournalViewInterface {
         void showToast(int code);
         void showToastException(String e);
+        void returnToChange();
     }
 
     interface AddJournalPresenterInterface {

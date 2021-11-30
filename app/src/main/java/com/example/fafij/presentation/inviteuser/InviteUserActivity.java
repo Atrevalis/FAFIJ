@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,7 +17,7 @@ import com.example.fafij.databinding.ActivityInviteuserBinding;
 
 public class InviteUserActivity extends AppCompatActivity implements InviteUserContract.InviteUserViewInterface {
 
-    InviteUserPresenter presenter;
+    InviteUserPresenter presenter = new InviteUserPresenter(this);
     ActivityInviteuserBinding binding;
     private boolean isAdult = false;
 
@@ -26,7 +27,6 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
         super.onCreate(savedInstanceState);
         binding = ActivityInviteuserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        InviteUserPresenter presenter = new InviteUserPresenter(this);
         binding.radioButtonsRole.setOnCheckedChangeListener((radioGroup, r_id) -> {
             switch(r_id){
                 case R.id.adult:
@@ -41,7 +41,7 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
     }
 
     public void sendInvitation() {
-        SharedPreferences sp = getSharedPreferences("mainStorage", Context.MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onInviteClick(sp.getString("journalName", ""),binding.loginEditText.getText().toString(), isAdult);
     }
 
@@ -54,5 +54,11 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
     @Override
     public void showToastException(String e) {
 
+    }
+
+    @Override
+    public String getLogin() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        return sp.getString("login", "");
     }
 }

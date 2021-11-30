@@ -34,4 +34,8 @@
     <string name="add_note">Добавить новую запись</string>
     <string name="id_note">id записи:</string>
     <string name="date_note">Дата записи:</string>
+    <string name="money_sum">Денежная сумма</string>
+    <string name="category_hint">Категория</string>
+    <string name="comment_hint">Комментарий</string>
+    <string name="choose">Выбрать</string>
 </resources>

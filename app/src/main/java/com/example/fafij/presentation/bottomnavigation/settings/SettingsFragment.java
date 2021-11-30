@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityAddjournalBinding;
+import com.example.fafij.databinding.FragmentJournalBinding;
 import com.example.fafij.databinding.FragmentSettingsBinding;
 import com.example.fafij.presentation.addjournal.AddJournalActivity;
 import com.example.fafij.presentation.changejournal.ChangeJournalActivity;
@@ -38,7 +39,13 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        binding = FragmentSettingsBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        binding.changeJournal.setOnClickListener(view -> goToChangeJournal());
+        binding.addUser.setOnClickListener(view -> goToInviteUser());
+        binding.invitations.setOnClickListener(view -> goToInvitations());
+        binding.exit.setOnClickListener(view -> goOut());
+        return root;
     }
 
     @Override
