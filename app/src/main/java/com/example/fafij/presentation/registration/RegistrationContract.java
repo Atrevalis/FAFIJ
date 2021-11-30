@@ -11,6 +11,7 @@ public interface RegistrationContract {
     interface RegistrationViewInterface {
         void showToast(int code);
         void showToastException(String exception);
+        void finishRegistration();
     }
 
     interface RegistrationPresenterInterface {

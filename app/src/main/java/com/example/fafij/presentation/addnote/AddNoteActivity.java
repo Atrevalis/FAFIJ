@@ -42,13 +42,15 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
         int day = c.get(Calendar.DAY_OF_MONTH);
         int hour = c.get(Calendar.HOUR);
         int minute = c.get(Calendar.MINUTE);
+        int second = c.get(Calendar.SECOND);
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, day);
         cal.set(Calendar.HOUR, hour);
         cal.set(Calendar.MINUTE, minute);
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        cal.set(Calendar.SECOND, second);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return format.format(cal.getTime());
     }
 

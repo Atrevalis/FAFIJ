@@ -56,10 +56,12 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
     @Override
     public void showToast(int code) {
         String toast = "";
-        if (code == 406) toast = "Пользователь не найден";
+        if (code == 404) toast = "Пользователь не найден";
+        if (code == 406) toast = "Недостаточно прав";
         if (code == 500) toast = "Неизвестная ошибка";
         if (code == 409) toast = "Пользователь уже использует этот журнал";
         if (code == 201) toast = "Приглашение отправлено";
+        if (code == 303) toast = "Пользователь уже приглашён";
         Toast.makeText(
                 this,
                 toast,

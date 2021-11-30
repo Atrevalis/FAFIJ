@@ -39,6 +39,10 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     }
 
+    @Override
+    public void finishRegistration() {
+        finish();
+    }
 
     @Override
     public void showToast(int code){

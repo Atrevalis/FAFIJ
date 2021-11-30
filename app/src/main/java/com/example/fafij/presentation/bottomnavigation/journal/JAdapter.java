@@ -2,6 +2,7 @@ package com.example.fafij.presentation.bottomnavigation.journal;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,10 @@ public class JAdapter extends RecyclerView.Adapter<JAdapter.HolderJ> {
         holder.textId.setText(Long.toString(note.getId()));
         holder.textDate.setText(note.getDate());
         holder.textSum.setText(Long.toString(note.getSum()));
+        if (note.getSum() > 0L) {
+            holder.textSum.setTextColor(Color.parseColor("#00ff00"));
+        }
+        else if (note.getSum() < 0L) holder.textSum.setTextColor(Color.parseColor("#ff0000"));
         holder.textCategory.setText(note.getCategory().getName());
         holder.textComment.setText(note.getComment());
         holder.delete.setOnClickListener(view -> {

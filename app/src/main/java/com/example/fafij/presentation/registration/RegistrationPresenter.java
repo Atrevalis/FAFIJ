@@ -42,7 +42,8 @@ public class RegistrationPresenter implements RegistrationContract.RegistrationP
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull retrofit2.Response<Void> response) {
-                view.showToast(response.code());
+                if (!response.isSuccessful()) view.showToast(response.code());
+                else view.finishRegistration();
             }
 
             @Override

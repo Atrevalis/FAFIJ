@@ -29,8 +29,8 @@ public class AddNotePresenter implements AddNoteContract.AddNotePresenterInterfa
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     view.finishActivity();
-                }
-                view.showToast(response.code());
+                } else view.showToast(response.code());
+
             }
 
             @Override

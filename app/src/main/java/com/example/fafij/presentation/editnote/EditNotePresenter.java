@@ -27,8 +27,8 @@ public class EditNotePresenter implements EditNoteContract.EditNotePresenterInte
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                view.showToast(response.code());
                 if (response.isSuccessful()) view.returnToJournal();
+                else view.showToast(response.code());
             }
 
             @Override
