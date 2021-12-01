@@ -42,6 +42,12 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
                 showToastException("Введите денежную сумму");
                 return;
             }
+            try {
+                Long.parseLong(binding.noteSumEdittext.getText().toString());
+            } catch (Exception e) {
+                showToastException("Недействительное значение денежной суммы");
+                return;
+            }
             presenter.onSubmitClick(
                     bundle.getLong("id"),
                     bundle.get("date").toString(),

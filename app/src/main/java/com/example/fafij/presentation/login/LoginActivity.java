@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     }
 
-
     @Override
     public void showToast(int code) {
         String toast = "";

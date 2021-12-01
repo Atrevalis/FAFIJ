@@ -67,6 +67,12 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
             showToastException("Введите денежную сумму");
             return;
         }
+        try {
+            Long.parseLong(binding.noteSumEdittext.getText().toString());
+        } catch (Exception e) {
+            showToastException("Недействительное значение денежной суммы");
+            return;
+        }
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onAddClick(
                 getDate(),
