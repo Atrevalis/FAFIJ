@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.editnote.EditNoteActivity"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/note_sum_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/money_sum"
+        android:inputType="numberSigned"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/category_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/category_hint"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+    <EditText
+        android:id="@+id/comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/comment_hint"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/edit_note_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:layout_margin="10dp"
+        android:background="@drawable/standard_button_style"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
