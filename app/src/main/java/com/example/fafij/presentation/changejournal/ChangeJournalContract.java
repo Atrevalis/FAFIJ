@@ -12,12 +12,15 @@ public interface ChangeJournalContract {
         void showToastException(String e);
         void showJournalsList(ArrayList<Journal> journals);
         void saveData(String journalName);
-        void goToBottomNavigation();
+        void saveIdRole(Long id);
+        void getRole();
+        void goToBottomViewNavigation();
     }
 
     interface ChangeJournalPresenterInterface {
         void onChangingClick(String journalName);
         void onLoad(String login);
+        void onLoadingView(String login, String journalName);
     }
 
 }

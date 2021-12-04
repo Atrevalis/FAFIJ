@@ -2,7 +2,9 @@ package com.example.fafij.presentation.bottomnavigation.journal;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +70,11 @@ public class JAdapter extends RecyclerView.Adapter<JAdapter.HolderJ> {
         else if (note.getSum() < 0L) holder.textSum.setTextColor(Color.parseColor("#ff0000"));
         holder.textCategory.setText(note.getCategory().getName());
         holder.textComment.setText(note.getComment());
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        if (sp.getLong("idRole", 0) != 3) {
+            holder.delete.setVisibility(View.VISIBLE);
+            holder.edit.setVisibility(View.VISIBLE);
+        }
         holder.delete.setOnClickListener(view -> {
             presenter.onDeleteClick(note.getId());
             deleteElement(position);

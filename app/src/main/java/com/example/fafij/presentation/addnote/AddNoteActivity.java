@@ -29,7 +29,7 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
         super.onCreate(savedInstanceState);
         binding = ActivityAddnoteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.addNoteButton.setOnClickListener(view -> sendAddingNote());
 
 

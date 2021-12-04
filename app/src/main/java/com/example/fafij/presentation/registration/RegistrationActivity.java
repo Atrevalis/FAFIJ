@@ -27,7 +27,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         super.onCreate(savedInstanceState);
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         RegistrationPresenter presenter = new RegistrationPresenter(this);
         binding.registrationButton.setOnClickListener(view -> {
             try {

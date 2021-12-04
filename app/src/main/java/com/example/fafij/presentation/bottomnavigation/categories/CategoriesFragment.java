@@ -39,6 +39,10 @@ public class CategoriesFragment extends Fragment implements CategoriesContract.C
                              Bundle savedInstanceState) {
         binding = FragmentCategoriesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        if (sp.getLong("idRole", 0) != 3) {
+            binding.addCategoriesButton.setVisibility(View.VISIBLE);
+        }
         binding.addCategoriesButton.setOnClickListener(view -> goToAddCategory());
         return root;
     }

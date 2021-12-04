@@ -31,12 +31,7 @@
                 android:layout_margin="5dp"
                 android:textSize="18sp"
                 android:text="@string/journal_change_name"/>
-            <TextView
-                android:id="@+id/invitations_logins"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/journal_change_logins"/>
+
             <TextView
                 android:id="@+id/invitations_role"
                 android:layout_width="wrap_content"

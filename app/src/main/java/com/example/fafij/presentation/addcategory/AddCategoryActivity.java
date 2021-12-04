@@ -27,7 +27,7 @@ public class AddCategoryActivity extends AppCompatActivity implements AddCategor
         super.onCreate(savedInstanceState);
         binding = ActivityAddcategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.addCategoryButton.setOnClickListener(view -> sendAddingCategoryName());
 
     }

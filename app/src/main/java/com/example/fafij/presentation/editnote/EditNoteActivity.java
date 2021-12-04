@@ -24,7 +24,7 @@ public class EditNoteActivity extends AppCompatActivity implements EditNoteContr
         super.onCreate(savedInstanceState);
         binding = ActivityEditnoteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         Bundle bundle = getIntent().getExtras();
         binding.noteSumEdittext.setText(bundle.get("sum").toString());
         binding.categoryNameEdittext.setText(bundle.get("category").toString());

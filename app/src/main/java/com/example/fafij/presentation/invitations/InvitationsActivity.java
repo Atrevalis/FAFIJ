@@ -26,7 +26,7 @@ public class InvitationsActivity extends AppCompatActivity implements Invitation
         super.onCreate(savedInstanceState);
         binding = ActivityInvitationsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         presenter.onLoad(sp.getString("login", ""));
 

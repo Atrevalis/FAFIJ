@@ -24,7 +24,7 @@ public class AddJournalActivity extends AppCompatActivity implements AddJournalC
         super.onCreate(savedInstanceState);
         binding = ActivityAddjournalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.addJournal.setOnClickListener(view -> sendAddingJournalName());
 
     }

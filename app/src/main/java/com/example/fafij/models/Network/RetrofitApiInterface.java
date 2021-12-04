@@ -69,4 +69,7 @@ public interface RetrofitApiInterface {
     @POST("private/updateNote")
     Call<Void> updateNote(@Body NoteEdit noteEdit);
 
+    @POST("private/userRole")
+    Call<Long> userRole(@Body LoginJournal loginJournal);
+
 }

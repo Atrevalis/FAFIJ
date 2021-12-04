@@ -41,7 +41,10 @@ public class SettingsFragment extends Fragment implements SettingsContract.Setti
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        if (sp.getLong("idRole", 0) == 1) {
+            binding.addUser.setVisibility(View.VISIBLE);
+        }
         binding.currentJournal.append(sp.getString("journalName", ""));
         binding.currentLogin.append(sp.getString("login", ""));
         binding.changeJournal.setOnClickListener(view -> goToChangeJournal());

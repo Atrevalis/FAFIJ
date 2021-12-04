@@ -64,9 +64,24 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
     }
 
     @Override
-    public void goToBottomNavigation() {
+    public void saveIdRole(Long id) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putLong("idRole", id);
+        editor.apply();
+    }
+
+    @Override
+    public void getRole() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        presenter.onLoadingView(sp.getString("login",""), sp.getString("journalName",""));
+    }
+
+    @Override
+    public void goToBottomViewNavigation() {
         startActivity(new Intent(this, BottomNavigationActivity.class));
     }
+
 
     /**
      * Перенаправляет на экран добавления журнала по клику (int)

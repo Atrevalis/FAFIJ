@@ -29,7 +29,7 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
         super.onCreate(savedInstanceState);
         binding = ActivityInviteuserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.radioButtonsRole.setOnCheckedChangeListener((radioGroup, r_id) -> {
             switch(r_id){
                 case R.id.adult:
