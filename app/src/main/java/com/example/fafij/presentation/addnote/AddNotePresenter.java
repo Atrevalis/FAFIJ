@@ -3,8 +3,10 @@ package com.example.fafij.presentation.addnote;
 import androidx.annotation.NonNull;
 
 import com.example.fafij.models.Network.RetrofitApiClient;
-import com.example.fafij.models.data.postbodies.LoginJournal;
+
 import com.example.fafij.models.data.postbodies.NotePost;
+
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +19,6 @@ public class AddNotePresenter implements AddNoteContract.AddNotePresenterInterfa
     public AddNotePresenter(AddNoteContract.AddNoteViewInterface view) {
         this.view = view;
     }
-
 
 
     @Override

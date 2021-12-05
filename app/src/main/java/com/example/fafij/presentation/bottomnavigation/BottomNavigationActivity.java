@@ -21,10 +21,6 @@ public class BottomNavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBottomnavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
-
-
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.journal_fragment, R.id.categories_fragment, R.id.infographics_fragment, R.id.settings_fragment)
                 .build();

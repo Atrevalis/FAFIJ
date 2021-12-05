@@ -5,6 +5,7 @@ import com.example.fafij.models.data.Invitation;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.models.data.Login;
 import com.example.fafij.models.data.Note;
+import com.example.fafij.models.data.postbodies.BitMatrixBody;
 import com.example.fafij.models.data.postbodies.CategoryLoginJournal;
 import com.example.fafij.models.data.postbodies.JournalLoginRoleAdmin;
 import com.example.fafij.models.data.postbodies.JournalName;
@@ -15,11 +16,14 @@ import com.example.fafij.models.data.postbodies.NoteEdit;
 import com.example.fafij.models.data.postbodies.NoteLoginJournal;
 import com.example.fafij.models.data.postbodies.NotePost;
 
+import com.google.zxing.common.BitMatrix;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface RetrofitApiInterface {
@@ -71,5 +75,8 @@ public interface RetrofitApiInterface {
 
     @POST("private/userRole")
     Call<Long> userRole(@Body LoginJournal loginJournal);
+
+    @POST("private/decodeQR")
+    Call<String> decodeQR(@Body BitMatrixBody bitMatrixBody);
 
 }

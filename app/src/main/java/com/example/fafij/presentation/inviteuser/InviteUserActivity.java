@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fafij.R;
@@ -43,6 +45,15 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
         binding.inviteButton.setOnClickListener(view -> sendInvitation());
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void sendInvitation() {
         if (binding.loginEditText.getText().toString().equals("")) {
             showToastException("Введите логин пользователя");
@@ -61,7 +72,7 @@ public class InviteUserActivity extends AppCompatActivity implements InviteUserC
         if (code == 500) toast = "Неизвестная ошибка";
         if (code == 409) toast = "Пользователь уже использует этот журнал";
         if (code == 201) toast = "Приглашение отправлено";
-        if (code == 303) toast = "Пользователь уже приглашён";
+        if (code == 303) toast = "Пользователь уже был приглашён";
         Toast.makeText(
                 this,
                 toast,
