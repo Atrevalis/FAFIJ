@@ -2,6 +2,7 @@ package com.example.fafij.presentation.addnote;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 
 import com.example.fafij.models.data.postbodies.NotePost;
@@ -24,7 +25,7 @@ public class AddNotePresenter implements AddNoteContract.AddNotePresenterInterfa
     @Override
     public void onAddClick(String date, long sum, String category, String comment, String journalName) {
         NotePost notePost = new NotePost(date, sum, category, comment, journalName);
-        Call<Void> call = RetrofitApiClient.getClient().addNote(notePost);
+        Call<Void> call = RetrofitApiClient.getClient().addNote(FafijApp.getToken(), notePost);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {

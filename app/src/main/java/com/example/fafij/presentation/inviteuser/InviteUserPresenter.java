@@ -2,6 +2,7 @@ package com.example.fafij.presentation.inviteuser;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.postbodies.JournalLoginRoleAdmin;
 
@@ -21,7 +22,7 @@ public class InviteUserPresenter implements InviteUserContract.InviteUserPresent
     public void onInviteClick(String journalName, String login, boolean isAdult) {
         String role = isAdult ? "ADULT" : "KID";
         JournalLoginRoleAdmin journalLoginRoleAdmin = new JournalLoginRoleAdmin(journalName, login, role, view.getLogin());
-        Call<Void> call = RetrofitApiClient.getClient().addUser(journalLoginRoleAdmin);
+        Call<Void> call = RetrofitApiClient.getClient().addUser(FafijApp.getToken(), journalLoginRoleAdmin);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {

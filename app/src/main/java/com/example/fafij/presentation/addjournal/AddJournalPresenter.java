@@ -2,6 +2,7 @@ package com.example.fafij.presentation.addjournal;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.postbodies.LoginJournal;
 
@@ -29,7 +30,7 @@ public class AddJournalPresenter implements AddJournalContract.AddJournalPresent
             return;
         }
         LoginJournal loginJournal = new LoginJournal(login, journalName);
-        Call<Void> call = RetrofitApiClient.getClient().createJournal(loginJournal);
+        Call<Void> call = RetrofitApiClient.getClient().createJournal(FafijApp.getToken(), loginJournal);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {

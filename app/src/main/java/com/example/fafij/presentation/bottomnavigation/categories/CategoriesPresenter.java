@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 
 import com.example.fafij.models.data.postbodies.JournalName;
@@ -29,7 +30,7 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
      */
     @Override
     public void onDeleteClick(String category) {
-        Call<Void> call = RetrofitApiClient.getClient().deleteCategory(view.getData(category));
+        Call<Void> call = RetrofitApiClient.getClient().deleteCategory(FafijApp.getToken(), view.getData(category));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
@@ -47,7 +48,7 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
     @Override
     public void onLoad(String journalName) {
         JournalName postJournalName = new JournalName(journalName);
-        Call<ArrayList<String>> call = RetrofitApiClient.getClient().listCategory(postJournalName);
+        Call<ArrayList<String>> call = RetrofitApiClient.getClient().listCategory(FafijApp.getToken(), postJournalName);
         call.enqueue(new Callback<ArrayList<String>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<String>> call, @NonNull Response<ArrayList<String>> response) {

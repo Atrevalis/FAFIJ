@@ -4,6 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.models.data.Login;
@@ -44,7 +45,7 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
     @Override
     public void onLoad(String login) {
         Login postLogin = new Login(login);
-        Call<ArrayList<Journal>> call = RetrofitApiClient.getClient().userJournals(postLogin);
+        Call<ArrayList<Journal>> call = RetrofitApiClient.getClient().userJournals(FafijApp.getToken(), postLogin);
         call.enqueue(new Callback<ArrayList<Journal>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Journal>> call, @NonNull Response<ArrayList<Journal>> response) {
@@ -64,7 +65,7 @@ public class ChangeJournalPresenter implements ChangeJournalContract.ChangeJourn
     public void onLoadingView(String login, String journalName) {
         Log.e("test", login + " " + journalName);
         LoginJournal loginJournal = new LoginJournal(login, journalName);
-        Call<Long> call = RetrofitApiClient.getClient().userRole(loginJournal);
+        Call<Long> call = RetrofitApiClient.getClient().userRole(FafijApp.getToken(), loginJournal);
         call.enqueue(new Callback<Long>() {
             @Override
             public void onResponse(@NonNull Call<Long> call, @NonNull Response<Long> response) {

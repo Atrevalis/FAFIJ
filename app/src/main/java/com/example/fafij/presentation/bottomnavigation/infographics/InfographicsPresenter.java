@@ -2,6 +2,7 @@ package com.example.fafij.presentation.bottomnavigation.infographics;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Note;
 import com.example.fafij.models.data.postbodies.JournalName;
@@ -23,7 +24,7 @@ public class InfographicsPresenter implements InfographicsContract.InfographicsP
     @Override
     public void onLoad(String journalName) {
         JournalName postJournalName = new JournalName(journalName);
-        Call<ArrayList<Note>> call = RetrofitApiClient.getClient().listNote(postJournalName);
+        Call<ArrayList<Note>> call = RetrofitApiClient.getClient().listNote(FafijApp.getToken(), postJournalName);
         call.enqueue(new Callback<ArrayList<Note>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Note>> call, @NonNull Response<ArrayList<Note>> response) {

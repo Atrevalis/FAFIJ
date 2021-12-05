@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -35,48 +36,46 @@ public interface RetrofitApiInterface {
     Call<Void> registration(@Body LoginPass loginPass);
 
     @POST("private/userJournals")
-    Call<ArrayList<Journal>> userJournals(@Body Login login);
+    Call<ArrayList<Journal>> userJournals(@Header("Authorization") String token, @Body Login login);
 
     @POST("private/createJournal")
-    Call<Void> createJournal(@Body LoginJournal loginJournal);
+    Call<Void> createJournal(@Header("Authorization") String token, @Body LoginJournal loginJournal);
 
     @POST("private/listNote")
-    Call<ArrayList<Note>> listNote(@Body JournalName journalName);
+    Call<ArrayList<Note>> listNote(@Header("Authorization") String token, @Body JournalName journalName);
 
     @POST("private/deleteNote")
-    Call<Void> deleteNote(@Body NoteLoginJournal noteLoginJournal);
+    Call<Void> deleteNote(@Header("Authorization") String token, @Body NoteLoginJournal noteLoginJournal);
 
     @POST("private/addNote")
-    Call<Void> addNote(@Body NotePost notePost);
+    Call<Void> addNote(@Header("Authorization") String token, @Body NotePost notePost);
 
     @POST("private/listCategory")
-    Call<ArrayList<String>> listCategory(@Body JournalName journalName);
+    Call<ArrayList<String>> listCategory(@Header("Authorization") String token, @Body JournalName journalName);
 
     @POST("private/addCategory")
-    Call<Void> addCategory(@Body CategoryLoginJournal categoryLoginJournal);
+    Call<Void> addCategory(@Header("Authorization") String token, @Body CategoryLoginJournal categoryLoginJournal);
 
     @POST("private/deleteCategory")
-    Call<Void> deleteCategory(@Body CategoryLoginJournal categoryLoginJournal);
+    Call<Void> deleteCategory(@Header("Authorization") String token, @Body CategoryLoginJournal categoryLoginJournal);
 
     @POST("private/addUser")
-    Call<Void> addUser(@Body JournalLoginRoleAdmin journalLoginRoleAdmin);
+    Call<Void> addUser(@Header("Authorization") String token, @Body JournalLoginRoleAdmin journalLoginRoleAdmin);
 
     @POST("private/invitations")
-    Call<ArrayList<Invitation>> userInvitation(@Body Login login);
+    Call<ArrayList<Invitation>> userInvitation(@Header("Authorization") String token, @Body Login login);
 
     @POST("private/accept")
-    Call<Void> accept(@Body LoginJournal loginJournal);
+    Call<Void> accept(@Header("Authorization") String token, @Body LoginJournal loginJournal);
 
     @POST("private/decline")
-    Call<Void> decline(@Body LoginJournal loginJournal);
+    Call<Void> decline(@Header("Authorization") String token, @Body LoginJournal loginJournal);
 
     @POST("private/updateNote")
-    Call<Void> updateNote(@Body NoteEdit noteEdit);
+    Call<Void> updateNote(@Header("Authorization") String token, @Body NoteEdit noteEdit);
 
     @POST("private/userRole")
-    Call<Long> userRole(@Body LoginJournal loginJournal);
+    Call<Long> userRole(@Header("Authorization") String token, @Body LoginJournal loginJournal);
 
-    @POST("private/decodeQR")
-    Call<String> decodeQR(@Body BitMatrixBody bitMatrixBody);
 
 }
