@@ -4,6 +4,7 @@ package com.example.fafij.presentation.bottomnavigation.journal;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Category;
 import com.example.fafij.models.data.Journal;
@@ -33,7 +34,7 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
      */
     @Override
     public void onDeleteClick(long id) {
-        Call<Void> call = RetrofitApiClient.getClient().deleteNote(view.getData(id));
+        Call<Void> call = RetrofitApiClient.getClient().deleteNote(FafijApp.getToken(), view.getData(id));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
@@ -55,7 +56,7 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
     @Override
     public void onLoad(String journalName) {
         JournalName postJournalName = new JournalName(journalName);
-        Call<ArrayList<Note>> call = RetrofitApiClient.getClient().listNote(postJournalName);
+        Call<ArrayList<Note>> call = RetrofitApiClient.getClient().listNote(FafijApp.getToken(), postJournalName);
         call.enqueue(new Callback<ArrayList<Note>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Note>> call, @NonNull Response<ArrayList<Note>> response) {

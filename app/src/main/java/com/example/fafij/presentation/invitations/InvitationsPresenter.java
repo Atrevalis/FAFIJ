@@ -2,6 +2,7 @@ package com.example.fafij.presentation.invitations;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.Invitation;
 import com.example.fafij.models.data.Login;
@@ -22,7 +23,7 @@ public class InvitationsPresenter implements InvitationsContract.InvitationsPres
 
     @Override
     public void onAcceptClick(String journalName) {
-        Call<Void> call = RetrofitApiClient.getClient().accept(view.getData(journalName));
+        Call<Void> call = RetrofitApiClient.getClient().accept(FafijApp.getToken(), view.getData(journalName));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
@@ -38,7 +39,7 @@ public class InvitationsPresenter implements InvitationsContract.InvitationsPres
 
     @Override
     public void onRefuseClick(String journalName) {
-        Call<Void> call = RetrofitApiClient.getClient().decline(view.getData(journalName));
+        Call<Void> call = RetrofitApiClient.getClient().decline(FafijApp.getToken(), view.getData(journalName));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
@@ -55,7 +56,7 @@ public class InvitationsPresenter implements InvitationsContract.InvitationsPres
     @Override
     public void onLoad(String login) {
         Login postLogin = new Login(login);
-        Call<ArrayList<Invitation>> call = RetrofitApiClient.getClient().userInvitation(postLogin);
+        Call<ArrayList<Invitation>> call = RetrofitApiClient.getClient().userInvitation(FafijApp.getToken(), postLogin);
         call.enqueue(new Callback<ArrayList<Invitation>>() {
             @Override
             public void onResponse(Call<ArrayList<Invitation>> call, Response<ArrayList<Invitation>> response) {

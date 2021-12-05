@@ -18,6 +18,7 @@ import com.example.fafij.databinding.ActivityChangejournalBinding;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.presentation.addjournal.AddJournalActivity;
 import com.example.fafij.presentation.bottomnavigation.BottomNavigationActivity;
+import com.example.fafij.presentation.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -106,10 +107,25 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
      */
     @Override
     public void showToastError(int code) {
-        String toast = "Неизвестная ошибка";
-        Toast.makeText(
+        if (code == 403) {
+            String toast = "Токен недействителен";
+            Toast.makeText(
+                    this,
+                    toast,
+                    Toast.LENGTH_SHORT
+            ).show();
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("journalName", "");
+            editor.putString("jwtToken", "");
+            editor.putString("login", "");
+            editor.apply();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else Toast.makeText(
                 this,
-                toast,
+                "Неизвестная ошибка",
                 Toast.LENGTH_SHORT
         ).show();
     }

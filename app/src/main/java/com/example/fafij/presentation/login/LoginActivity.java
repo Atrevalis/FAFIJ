@@ -28,7 +28,7 @@ import java.security.spec.InvalidKeySpecException;
 public class LoginActivity extends AppCompatActivity implements LoginContract.LoginViewInterface {
 
     ActivityLoginBinding binding;
-    LoginPresenter presenter;
+    LoginPresenter presenter = new LoginPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         if (!sp.getString("login", "").equals("")) goToChangeJournal();
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        LoginPresenter presenter = new LoginPresenter(this);
         getSupportActionBar().setTitle("Вход");
         binding.loginButton.setOnClickListener(view -> {
             try {

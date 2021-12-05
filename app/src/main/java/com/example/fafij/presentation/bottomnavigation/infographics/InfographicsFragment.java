@@ -110,7 +110,16 @@ public class InfographicsFragment extends Fragment implements InfographicsContra
         for (int color: ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
-        PieDataSet dataSet = new PieDataSet(entries, "Траты по категориям");
+        for (int color: ColorTemplate.COLORFUL_COLORS) {
+            colors.add(color);
+        }
+        for (int color: ColorTemplate.JOYFUL_COLORS) {
+            colors.add(color);
+        }
+        for (int color: ColorTemplate.PASTEL_COLORS) {
+            colors.add(color);
+        }
+        PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setDrawValues(true);

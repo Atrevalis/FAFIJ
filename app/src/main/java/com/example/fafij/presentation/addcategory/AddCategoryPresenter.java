@@ -2,6 +2,7 @@ package com.example.fafij.presentation.addcategory;
 
 import androidx.annotation.NonNull;
 
+import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 import com.example.fafij.models.data.postbodies.CategoryLoginJournal;
 
@@ -19,7 +20,7 @@ public class AddCategoryPresenter implements AddCategoryContract.AddCategoryPres
 
     @Override
     public void onAddCategory(CategoryLoginJournal categoryLoginJournal) {
-        Call<Void> call = RetrofitApiClient.getClient().addCategory(categoryLoginJournal);
+        Call<Void> call = RetrofitApiClient.getClient().addCategory(FafijApp.getToken(), categoryLoginJournal);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
