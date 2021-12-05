@@ -2,6 +2,8 @@ package com.example.fafij.presentation.bottomnavigation.categories;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,10 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
     public void onBindViewHolder(@NonNull HolderC holder, int position) {
         String category = listOfElements.get(position);
         holder.textCategory.setText(category);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        if (sp.getLong("idRole", 0) != 3) {
+            holder.delete.setVisibility(View.VISIBLE);
+        }
         holder.delete.setOnClickListener(view -> {
             presenter.onDeleteClick(category);
             deleteElement(position);

@@ -65,6 +65,7 @@
                 android:layout_width="match_parent">
                 <Button
                     android:id="@+id/note_edit_button"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/edit"
@@ -73,6 +74,7 @@
                     android:background="@drawable/standard_button_style"/>
                 <Button
                     android:id="@+id/note_delete_button"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

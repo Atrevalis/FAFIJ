@@ -78,13 +78,6 @@ public class JournalFragment extends Fragment implements JournalContract.Journal
     }
 
 
-    /**
-     * Перенаправляет на экран редактирования нажатой записи (int)
-     */
-    public void onEditClick() {
-
-    }
-
 
     @Override
     public void showNotes(ArrayList<Note> notes) {

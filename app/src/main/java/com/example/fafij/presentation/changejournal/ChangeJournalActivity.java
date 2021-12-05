@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,14 +40,21 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
         } else {
             if (!sp.getString("journalName", "").equals("")) goToBottomNavigation();
         }*/
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
-        /*if (getIntent().hasExtra("changing")) {
+        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        if (getIntent().hasExtra("changing")) {
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        }*/
+        }
         presenter.onLoad(sp.getString("login", ""));
         binding.addJournalButton.setOnClickListener(view -> goToAddJournal());
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -64,9 +73,24 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
     }
 
     @Override
-    public void goToBottomNavigation() {
+    public void saveIdRole(Long id) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putLong("idRole", id);
+        editor.apply();
+    }
+
+    @Override
+    public void getRole() {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        presenter.onLoadingView(sp.getString("login",""), sp.getString("journalName",""));
+    }
+
+    @Override
+    public void goToBottomViewNavigation() {
         startActivity(new Intent(this, BottomNavigationActivity.class));
     }
+
 
     /**
      * Перенаправляет на экран добавления журнала по клику (int)

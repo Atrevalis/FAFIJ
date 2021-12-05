@@ -40,4 +40,6 @@
     <string name="choose">Выбрать</string>
     <string name="current_journal">Текущий журнал:\u0020</string>
     <string name="current_login">Текущий пользователь:\u0020</string>
+    <string name="qr">Имитация сканирования QR-кода</string>
+    <string name="check_sum">Сумма в чеке:\u0020</string>
 </resources>

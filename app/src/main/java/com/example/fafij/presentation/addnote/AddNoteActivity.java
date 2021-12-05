@@ -2,20 +2,50 @@ package com.example.fafij.presentation.addnote;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+
+import android.graphics.Color;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fafij.R;
 import com.example.fafij.databinding.ActivityAddnoteBinding;
-import com.example.fafij.models.data.postbodies.NoteLoginJournal;
-import com.example.fafij.presentation.addjournal.AddJournalPresenter;
+import com.github.mikephil.charting.utils.Utils;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.DecoderResult;
+import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.datamatrix.DataMatrixReader;
+
+import com.google.zxing.datamatrix.decoder.Decoder;
+import com.google.zxing.qrcode.QRCodeReader;
+import com.google.zxing.qrcode.QRCodeWriter;
+
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AddNoteActivity extends AppCompatActivity implements AddNoteContract.AddNoteViewInterface {
 
@@ -29,10 +59,24 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
         super.onCreate(savedInstanceState);
         binding = ActivityAddnoteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.addNoteButton.setOnClickListener(view -> sendAddingNote());
+        binding.qrcodeButton.setOnClickListener(view -> {
+            try {
+                showQR();
+            } catch (WriterException | NotFoundException e) {
+                showToastException(e.getLocalizedMessage());
+            }
+        });
+    }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public String getDate() {
@@ -83,14 +127,6 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
         );
     }
 
-    /**
-     * Перенаправляет на экран QRCode
-     */
-    public void goToQRCode() {
-
-    }
-
-
     @Override
     public void showToast(int code) {
         String toast = "";
@@ -114,5 +150,33 @@ public class AddNoteActivity extends AppCompatActivity implements AddNoteContrac
     @Override
     public void finishActivity() {
         finish();
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void showQR() throws WriterException, NotFoundException {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(String.valueOf(ThreadLocalRandom.current().nextLong(-20000L,-1L)), BarcodeFormat.
+                QR_CODE, 250, 250);
+        int width = bitMatrix.getWidth();
+        int height = bitMatrix.getHeight();
+        int[] pixels = new int[width * height];
+        for (int y = 0; y < height; y++) {
+            int offset = y * width;
+            for (int x = 0; x < width; x++) {
+                pixels[offset + x] = bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+        binding.qrCode.setImageBitmap(bitmap);
+        binding.qrCode.setVisibility(View.VISIBLE);
+        int[] intArray = new int[bitmap.getWidth() * bitmap.getHeight()];
+        bitmap.getPixels(intArray, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+        LuminanceSource source = new RGBLuminanceSource(bitmap.getWidth(), bitmap.getHeight(), intArray);
+        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+        Result result = new MultiFormatReader().decode(binaryBitmap);
+        binding.qrsum.setText(getString(R.string.check_sum) + result.getText());
+        binding.noteSumEdittext.setText(result.getText());
+        binding.qrsum.setVisibility(View.VISIBLE);
     }
 }

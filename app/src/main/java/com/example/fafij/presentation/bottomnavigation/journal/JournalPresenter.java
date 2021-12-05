@@ -58,7 +58,7 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
         Call<ArrayList<Note>> call = RetrofitApiClient.getClient().listNote(postJournalName);
         call.enqueue(new Callback<ArrayList<Note>>() {
             @Override
-            public void onResponse(Call<ArrayList<Note>> call, Response<ArrayList<Note>> response) {
+            public void onResponse(@NonNull Call<ArrayList<Note>> call, @NonNull Response<ArrayList<Note>> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
                 }
@@ -66,7 +66,7 @@ public class JournalPresenter implements JournalContract.JournalPresenterInterfa
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Note>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<Note>> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
             }
         });

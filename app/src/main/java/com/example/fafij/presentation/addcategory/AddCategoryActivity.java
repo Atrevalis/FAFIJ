@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fafij.R;
@@ -27,9 +29,18 @@ public class AddCategoryActivity extends AppCompatActivity implements AddCategor
         super.onCreate(savedInstanceState);
         binding = ActivityAddcategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.addCategoryButton.setOnClickListener(view -> sendAddingCategoryName());
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
