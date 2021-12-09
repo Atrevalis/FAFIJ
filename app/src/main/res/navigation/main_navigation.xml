@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/journal_fragment">
+
+    <fragment
+        android:id="@+id/journal_fragment"
+        android:label="@string/journal"
+        android:name="com.example.fafij.presentation.bottomnavigation.journal.JournalFragment"
+        tools:layout="@layout/fragment_journal" />
+    <fragment
+        android:id="@+id/categories_fragment"
+        android:label="@string/categories"
+        android:name="com.example.fafij.presentation.bottomnavigation.categories.CategoriesFragment"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/infographics_fragment"
+        android:label="@string/infographics"
+        android:name="com.example.fafij.presentation.bottomnavigation.infographics.InfographicsFragment"
+        tools:layout="@layout/fragment_infographics" />
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:label="@string/settings"
+        android:name="com.example.fafij.presentation.bottomnavigation.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

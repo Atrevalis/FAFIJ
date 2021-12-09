@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/journal_fragment"
+        android:icon="@drawable/ic_book"
+        android:title="@string/journal" />
+    <item
+        android:id="@+id/categories_fragment"
+        android:icon="@drawable/ic_category"
+        android:title="@string/categories" />
+    <item
+        android:id="@+id/infographics_fragment"
+        android:icon="@drawable/ic_data_thresholding"
+        android:title="@string/infographics" />
+    <item
+        android:id="@+id/settings_fragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
+</menu>

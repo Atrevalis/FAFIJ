@@ -1,2 +1,0 @@
-# FAFIJ
-Family Finance Journal

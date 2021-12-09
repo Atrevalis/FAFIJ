@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.example.fafij">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:name=".FafijApp"
+        android:allowBackup="true"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:exported="false"
+        android:theme="@style/AppTheme">
+        <activity android:name=".presentation.bottomnavigation.BottomNavigationActivity" />
+
+        <activity android:name=".presentation.changejournal.ChangeJournalActivity"
+            android:label="Сменить журнал"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.addjournal.AddJournalActivity"
+            android:label="Создать журнал"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.changejournal.ChangeJournalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.changejournal.ChangeJournalActivity"/>
+        </activity>
+        <activity android:name=".presentation.addcategory.AddCategoryActivity"
+            android:label="Создать категорию"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.addnote.AddNoteActivity"
+            android:label="Создать запись"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.editnote.EditNoteActivity"
+            android:label="Изменить запись"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".presentation.invitations.InvitationsActivity"
+            android:label="Приглашения"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.inviteuser.InviteUserActivity"
+            android:label="Пригласить пользователя"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.login.LoginActivity"
+            android:label="FAFIJ"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".presentation.registration.RegistrationActivity"
+            android:label="Регистрация"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.login.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fafij.presentation.login.LoginActivity"/>
+        </activity>
+    </application>
+
+</manifest>

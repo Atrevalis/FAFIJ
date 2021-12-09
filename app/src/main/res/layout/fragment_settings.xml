@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/journal_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.bottomnavigation.settings.SettingsFragment">
+
+
+    <TextView
+        android:id="@+id/current_journal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/current_journal" />
+
+    <TextView
+        android:id="@+id/current_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/current_login" />
+
+
+    <Button
+        android:id="@+id/change_journal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/change_journal" />
+
+    <Button
+        android:id="@+id/add_user"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/add_user" />
+
+    <Button
+        android:id="@+id/invitations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/invitations" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/standard_button_style"
+        android:text="@string/exit" />
+
+
+</LinearLayout>

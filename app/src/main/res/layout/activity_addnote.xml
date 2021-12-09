@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.addnote.AddNoteActivity"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/note_sum_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/money_sum"
+        android:inputType="numberSigned"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/category_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/category_hint"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+    <EditText
+        android:id="@+id/comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:hint="@string/comment_hint"
+        android:background="@drawable/standard_edittext_style"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/add_note_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_note"
+        android:layout_margin="10dp"
+        android:background="@drawable/standard_button_style"/>
+
+    <Button
+        android:id="@+id/qrcode_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/qr"
+        android:layout_margin="10dp"
+        android:background="@drawable/standard_button_style"/>
+
+    <ImageView
+        android:id="@+id/qr_code"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/qrsum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="10dp"
+        android:text="@string/check_sum"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
