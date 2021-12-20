@@ -9,14 +9,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_categories"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_view_categories"/>
+        app:layout_constraintBottom_toTopOf="@+id/add_categories_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/card_view_categories" />
 
     <Button
         android:id="@+id/add_categories_button"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

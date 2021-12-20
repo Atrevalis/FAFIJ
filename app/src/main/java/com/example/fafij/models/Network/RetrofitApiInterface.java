@@ -1,6 +1,7 @@
 package com.example.fafij.models.Network;
 
 
+import com.example.fafij.models.data.Category;
 import com.example.fafij.models.data.Invitation;
 import com.example.fafij.models.data.Journal;
 import com.example.fafij.models.data.Login;
@@ -51,7 +52,7 @@ public interface RetrofitApiInterface {
     Call<Void> addNote(@Header("Authorization") String token, @Body NotePost notePost);
 
     @POST("private/listCategory")
-    Call<ArrayList<String>> listCategory(@Header("Authorization") String token, @Body JournalName journalName);
+    Call<ArrayList<Category>> listCategory(@Header("Authorization") String token, @Body JournalName journalName);
 
     @POST("private/addCategory")
     Call<Void> addCategory(@Header("Authorization") String token, @Body CategoryLoginJournal categoryLoginJournal);

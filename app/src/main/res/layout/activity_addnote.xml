@@ -24,6 +24,7 @@
         android:layout_margin="10dp"
         android:singleLine="true"
         android:hint="@string/category_hint"
+        android:maxLength="20"
         android:background="@drawable/standard_edittext_style"
         android:textSize="18sp"/>
     <EditText
@@ -33,6 +34,7 @@
         android:layout_margin="10dp"
         android:singleLine="true"
         android:hint="@string/comment_hint"
+        android:maxLength="500"
         android:background="@drawable/standard_edittext_style"
         android:textSize="18sp"/>
 
