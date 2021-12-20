@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.fafij.FafijApp;
 import com.example.fafij.models.Network.RetrofitApiClient;
 
+import com.example.fafij.models.data.Category;
 import com.example.fafij.models.data.postbodies.JournalName;
 
 import java.util.ArrayList;
@@ -48,16 +49,16 @@ public class CategoriesPresenter implements CategoriesContract.CategoriesPresent
     @Override
     public void onLoad(String journalName) {
         JournalName postJournalName = new JournalName(journalName);
-        Call<ArrayList<String>> call = RetrofitApiClient.getClient().listCategory(FafijApp.getToken(), postJournalName);
-        call.enqueue(new Callback<ArrayList<String>>() {
+        Call<ArrayList<Category>> call = RetrofitApiClient.getClient().listCategory(FafijApp.getToken(), postJournalName);
+        call.enqueue(new Callback<ArrayList<Category>>() {
             @Override
-            public void onResponse(@NonNull Call<ArrayList<String>> call, @NonNull Response<ArrayList<String>> response) {
+            public void onResponse(@NonNull Call<ArrayList<Category>> call, @NonNull Response<ArrayList<Category>> response) {
                 if (!response.isSuccessful()) {
                     view.showToast(response.code());
                 } else view.showCategories(response.body());
             }
             @Override
-            public void onFailure(@NonNull Call<ArrayList<String>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<Category>> call, @NonNull Throwable t) {
                 view.showToastException(t.getLocalizedMessage());
             }
         });
