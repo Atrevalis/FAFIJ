@@ -9,9 +9,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_journal_notes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/add_note_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/card_view_journal_note"/>
 
     <Button

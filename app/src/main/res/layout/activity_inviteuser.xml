@@ -14,6 +14,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/standard_edittext_style"
         android:hint="@string/user_login"
+        android:maxLength="50"
         android:singleLine="true"
         android:textSize="18sp" />
     <TextView

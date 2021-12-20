@@ -27,6 +27,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
 
     ActivityChangejournalBinding binding;
     ChangeJournalPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +85,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
     @Override
     public void getRole() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        presenter.onLoadingView(sp.getString("login",""), sp.getString("journalName",""));
+        presenter.onLoadingView(sp.getString("login", ""), sp.getString("journalName", ""));
     }
 
     @Override
@@ -107,7 +108,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
      */
     @Override
     public void showToastError(int code) {
-        if (code == 403) {
+        if (code == 403 || code == 500) {
             String toast = "Токен недействителен";
             Toast.makeText(
                     this,
@@ -122,8 +123,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
             editor.apply();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        }
-        else Toast.makeText(
+        } else Toast.makeText(
                 this,
                 "Неизвестная ошибка",
                 Toast.LENGTH_SHORT
@@ -144,6 +144,7 @@ public class ChangeJournalActivity extends AppCompatActivity implements ChangeJo
 
     /**
      * Отображает на экране список доступных журналов
+     *
      * @param journals список журналов и пользователей в них
      */
     @Override

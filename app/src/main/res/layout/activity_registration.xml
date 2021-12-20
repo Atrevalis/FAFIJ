@@ -14,6 +14,7 @@
         android:layout_margin="10dp"
         android:singleLine="true"
         android:hint="@string/login_hint"
+        android:maxLength="50"
         android:background="@drawable/standard_edittext_style"
         android:textSize="18sp"/>
     <EditText

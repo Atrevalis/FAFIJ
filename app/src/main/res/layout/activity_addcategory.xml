@@ -13,6 +13,7 @@ tools:context=".presentation.addcategory.AddCategoryActivity"
         android:layout_margin="10dp"
         android:singleLine="true"
         android:hint="@string/category_name"
+        android:maxLength="20"
         android:background="@drawable/standard_edittext_style"
         android:textSize="18sp"/>
 

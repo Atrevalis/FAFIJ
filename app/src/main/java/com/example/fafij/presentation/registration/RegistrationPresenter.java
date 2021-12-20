@@ -37,6 +37,14 @@ public class RegistrationPresenter implements RegistrationContract.RegistrationP
             view.showToastException("Введите полные данные");
             return;
         }
+        if (login.contains(" ") || password.contains(" ")) {
+            view.showToastException("Логин и пароль не могут иметь пробелов");
+            return;
+        }
+        if (password.length() <= 6) {
+            view.showToastException("Длина пароля должна быть больше 6 символов");
+            return;
+        }
         LoginPass postRegIn = new LoginPass(login, hashPass(password));
         Call<Void> call = RetrofitApiClient.getClient().registration(postRegIn);
         call.enqueue(new Callback<Void>() {

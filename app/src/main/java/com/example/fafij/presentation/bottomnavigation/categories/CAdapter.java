@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.R;
-
+import com.example.fafij.models.data.Category;
 
 
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
 
     private final LayoutInflater inflater;
 
-    ArrayList<String> listOfElements;
+    ArrayList<Category> listOfElements;
     private final CategoriesPresenter presenter;
 
-    CAdapter(Context context, ArrayList<String> listOfElements, CategoriesPresenter presenter) {
+    CAdapter(Context context, ArrayList<Category> listOfElements, CategoriesPresenter presenter) {
         this.listOfElements = listOfElements;
         this.inflater = LayoutInflater.from(context);
         this.presenter = presenter;
@@ -34,7 +34,7 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
 
     @SuppressLint("NotifyDataSetChanged")
     public void addElement(String element) {
-        listOfElements.add(element);
+        listOfElements.add(new Category(element));
         notifyDataSetChanged();
     }
 
@@ -59,14 +59,14 @@ public class CAdapter extends RecyclerView.Adapter<CAdapter.HolderC> {
 
     @Override
     public void onBindViewHolder(@NonNull HolderC holder, int position) {
-        String category = listOfElements.get(position);
-        holder.textCategory.setText(category);
+        Category category = listOfElements.get(position);
+        holder.textCategory.setText(category.getName());
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
         if (sp.getLong("idRole", 0) != 3) {
             holder.delete.setVisibility(View.VISIBLE);
         }
         holder.delete.setOnClickListener(view -> {
-            presenter.onDeleteClick(category);
+            presenter.onDeleteClick(category.getName());
             deleteElement(position);
         });
     }

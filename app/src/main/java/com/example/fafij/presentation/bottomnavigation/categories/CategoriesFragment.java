@@ -1,6 +1,5 @@
 package com.example.fafij.presentation.bottomnavigation.categories;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fafij.databinding.FragmentCategoriesBinding;
+import com.example.fafij.models.data.Category;
 import com.example.fafij.models.data.postbodies.CategoryLoginJournal;
 import com.example.fafij.presentation.addcategory.AddCategoryActivity;
 
@@ -67,7 +67,7 @@ public class CategoriesFragment extends Fragment implements CategoriesContract.C
     }
 
     @Override
-    public void showCategories(ArrayList<String> categories) {
+    public void showCategories(ArrayList<Category> categories) {
         RecyclerView recyclerView = binding.recyclerViewCategories;
         Log.d("test1", categories.toString());
         CAdapter adapter = new CAdapter(getContext(), categories, presenter);
